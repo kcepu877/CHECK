@@ -921,7 +921,7 @@ function buildCountryFlag() {
     };
 
     const url = new URL(request.url);
-    const hostNameFromRequest = url.hostname;
+    const hostNameAsli = url.hostname;
     const hostName = 'freecf.kere.us.kg';
 // Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
@@ -965,7 +965,7 @@ function buildCountryFlag() {
       .map((config) => {
         const uuid = generateUUIDv4();
         const wildcard = selectedWildcard || hostName;
-        const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
+        const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostNameAsli}` : hostName;
         const url = new URL(request.url);
        const BASE_URL = `https://${url.hostname}`; 
        const CHECK_API = `${BASE_URL}/check?ip=`; 
@@ -2106,7 +2106,7 @@ function buildCountryFlag() {
                 <button id="search-button" class="button7">Search</button>
               </div>
               ${searchQuery
-                ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostName}')">
+                ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostNameAsli}')">
                   Home Page
                 </button>`
                 : ''}
@@ -2203,7 +2203,7 @@ function buildCountryFlag() {
         };
 
         function goToHomePage(hostName) {
-          const homeURL = \`https://\${hostName}/\`;
+          const homeURL = \`https://\${hostNameAsli}/\`;
           window.location.href = homeURL;
         }
         
