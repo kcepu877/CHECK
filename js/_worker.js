@@ -1002,22 +1002,32 @@ function buildCountryFlag() {
 
 <script>
     fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
             const spinner = document.getElementById('ping-' + data.ip + ':' + data.port);
 
+            // Periksa apakah data yang diterima memiliki properti yang diharapkan
+            if (!data.status || !data.latency) {
+                throw new Error('Invalid data received from API');
+            }
+
             // Ambil data status dan latency
             const status = data.status || 'UNKNOWN';
-            let latency = data.latency || 'N/A'; // Mengambil latency
+            let latency = data.latency || 'N/A';
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw latency:", data.latency); // Debugging log
             console.log("Parsed latency:", latency);  // Debugging log
 
-            // Tentukan divisor untuk delay jika perlu (misalnya, dibagi dengan 20)
-            const divisor = 20;
+            const divisor = 20; // Ubah sesuai kebutuhan
 
+            // Memproses latency jika perlu
             if (latency !== 'N/A' && !isNaN(latency)) {
                 latency = Math.round(parseFloat(latency) / divisor); 
                 console.log("Processed latency:", latency);  // Debugging log
@@ -1043,6 +1053,7 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error); // Log error
         });
 </script>
+
 
 
         
@@ -1079,22 +1090,32 @@ function buildCountryFlag() {
                 </tr>
 <script>
     fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
             const spinner = document.getElementById('ping-' + data.ip + ':' + data.port);
 
+            // Periksa apakah data yang diterima memiliki properti yang diharapkan
+            if (!data.status || !data.latency) {
+                throw new Error('Invalid data received from API');
+            }
+
             // Ambil data status dan latency
             const status = data.status || 'UNKNOWN';
-            let latency = data.latency || 'N/A'; // Mengambil latency
+            let latency = data.latency || 'N/A';
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw latency:", data.latency); // Debugging log
             console.log("Parsed latency:", latency);  // Debugging log
 
-            // Tentukan divisor untuk delay jika perlu (misalnya, dibagi dengan 20)
-            const divisor = 20;
+            const divisor = 20; // Ubah sesuai kebutuhan
 
+            // Memproses latency jika perlu
             if (latency !== 'N/A' && !isNaN(latency)) {
                 latency = Math.round(parseFloat(latency) / divisor); 
                 console.log("Processed latency:", latency);  // Debugging log
