@@ -1001,7 +1001,7 @@ function buildCountryFlag() {
                 </tr>
 
 <script>
-    fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
+    fetch(`${healthCheckUrl}`, { cache: 'no-store', keepalive: true }) // ✅ Perbaikan disini
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -1009,50 +1009,47 @@ function buildCountryFlag() {
             return response.json();
         })
         .then(data => {
-            const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.ip + ':' + data.port);
+            const statusElement = document.getElementById(`status-${ipPort}`);
+            const spinner = document.getElementById(`ping-${data.ip}:${data.port}`);
 
-            // Periksa apakah data yang diterima memiliki properti yang diharapkan
-            if (!data.status || !data.latency) {
+            // Validasi data
+            if (!data.latency) {
                 throw new Error('Invalid data received from API');
             }
 
-            // Ambil data status dan latency
-            const status = data.status || 'UNKNOWN';
-            let latency = data.latency || 'N/A';
+            let latency = parseFloat(data.latency);
+            if (isNaN(latency)) latency = 'N/A';
 
-            console.log("Status:", status);  // Debugging log
-            console.log("Raw latency:", data.latency); // Debugging log
-            console.log("Parsed latency:", latency);  // Debugging log
+            console.log("Raw latency:", data.latency);
+            console.log("Processed latency:", latency);
 
-            const divisor = 20; // Ubah sesuai kebutuhan
-
-            // Memproses latency jika perlu
-            if (latency !== 'N/A' && !isNaN(latency)) {
-                latency = Math.round(parseFloat(latency) / divisor); 
-                console.log("Processed latency:", latency);  // Debugging log
+            if (latency !== 'N/A') {
+                latency = `${Math.round(latency)} ms`;
             }
 
-            // Update status berdasarkan status yang didapat dari API
-            if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + latency + 'ms)</span>'; 
+            if (data.status === 'ACTIVE') {
+                statusElement.innerHTML = `<i class="fas fa-bolt"></i> <span style="color: gold;">(${latency})</span>`; 
                 statusElement.style.color = '#00FF00';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD') {
-                statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
+            } else if (data.status === 'DEAD') {
+                statusElement.textContent = '❌ DEAD';
                 statusElement.style.color = '#FF3333';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
+            } else {
+                statusElement.textContent = 'UNKNOWN';
+                statusElement.style.color = 'gray';
             }
         })
         .catch(error => {
-            const statusElement = document.getElementById('status-${ipPort}');
+            const statusElement = document.getElementById(`status-${ipPort}`);
             statusElement.textContent = 'Error';
             statusElement.style.color = 'cyan';
-            console.error('Error fetching data:', error); // Log error
+            console.error('Error fetching data:', error);
         });
 </script>
+
 
 
 
@@ -1089,7 +1086,7 @@ function buildCountryFlag() {
                     </td>
                 </tr>
 <script>
-    fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
+    fetch(`${healthCheckUrl}`, { cache: 'no-store', keepalive: true }) // ✅ Perbaikan disini
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -1097,50 +1094,47 @@ function buildCountryFlag() {
             return response.json();
         })
         .then(data => {
-            const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.ip + ':' + data.port);
+            const statusElement = document.getElementById(`status-${ipPort}`);
+            const spinner = document.getElementById(`ping-${data.ip}:${data.port}`);
 
-            // Periksa apakah data yang diterima memiliki properti yang diharapkan
-            if (!data.status || !data.latency) {
+            // Validasi data
+            if (!data.latency) {
                 throw new Error('Invalid data received from API');
             }
 
-            // Ambil data status dan latency
-            const status = data.status || 'UNKNOWN';
-            let latency = data.latency || 'N/A';
+            let latency = parseFloat(data.latency);
+            if (isNaN(latency)) latency = 'N/A';
 
-            console.log("Status:", status);  // Debugging log
-            console.log("Raw latency:", data.latency); // Debugging log
-            console.log("Parsed latency:", latency);  // Debugging log
+            console.log("Raw latency:", data.latency);
+            console.log("Processed latency:", latency);
 
-            const divisor = 20; // Ubah sesuai kebutuhan
-
-            // Memproses latency jika perlu
-            if (latency !== 'N/A' && !isNaN(latency)) {
-                latency = Math.round(parseFloat(latency) / divisor); 
-                console.log("Processed latency:", latency);  // Debugging log
+            if (latency !== 'N/A') {
+                latency = `${Math.round(latency)} ms`;
             }
 
-            // Update status berdasarkan status yang didapat dari API
-            if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + latency + 'ms)</span>'; 
+            if (data.status === 'ACTIVE') {
+                statusElement.innerHTML = `<i class="fas fa-bolt"></i> <span style="color: gold;">(${latency})</span>`; 
                 statusElement.style.color = '#00FF00';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD') {
-                statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
+            } else if (data.status === 'DEAD') {
+                statusElement.textContent = '❌ DEAD';
                 statusElement.style.color = '#FF3333';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
+            } else {
+                statusElement.textContent = 'UNKNOWN';
+                statusElement.style.color = 'gray';
             }
         })
         .catch(error => {
-            const statusElement = document.getElementById('status-${ipPort}');
+            const statusElement = document.getElementById(`status-${ipPort}`);
             statusElement.textContent = 'Error';
             statusElement.style.color = 'cyan';
-            console.error('Error fetching data:', error); // Log error
+            console.error('Error fetching data:', error);
         });
 </script>
+
 
 
 
