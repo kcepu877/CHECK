@@ -1,4 +1,4 @@
-name = "ns1" # todo
+name = "check" # todo
 main = "js/_worker.js"
 compatibility_date = "2024-05-26"
 
