@@ -1009,19 +1009,20 @@ function buildCountryFlag() {
 
             // Ambil data status dan delay
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.delay) || 'N/A'; // Pastikan delay berupa angka
+            let delay = parseFloat(data.delay) || 'N/A';  // Pastikan delay berupa angka
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", data.delay); // Debugging log
             console.log("Parsed delay:", delay);  // Debugging log
 
-            const divisor = 20; // Ubah sesuai kebutuhan
+            const divisor = 20;  // Ubah sesuai kebutuhan
 
             if (!isNaN(delay)) {
                 delay = Math.round(delay / divisor);
                 console.log("Processed delay:", delay);  // Debugging log
             }
 
+            // Memperbarui elemen berdasarkan status
             if (status === 'ACTIVE') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>'; 
                 statusElement.style.color = '#00FF00';
@@ -1032,15 +1033,22 @@ function buildCountryFlag() {
                 statusElement.style.color = '#FF3333';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
+            } else {
+                // Untuk status lain yang tidak terduga (misalnya 'UNKNOWN')
+                statusElement.innerHTML = '<strong>' + status + '</strong>';
+                statusElement.style.color = 'gray';
+                statusElement.style.fontSize = '13px';
+                statusElement.style.fontWeight = 'bold';
             }
         })
         .catch(error => {
             const statusElement = document.getElementById('status-${ipPort}');
             statusElement.textContent = 'Error';
             statusElement.style.color = 'cyan';
-            console.error('Error fetching data:', error); // Log error
+            console.error('Error fetching data:', error);  // Log error
         });
 </script>
+
 
         
 
@@ -1083,19 +1091,20 @@ function buildCountryFlag() {
 
             // Ambil data status dan delay
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.delay) || 'N/A'; // Pastikan delay berupa angka
+            let delay = parseFloat(data.delay) || 'N/A';  // Pastikan delay berupa angka
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", data.delay); // Debugging log
             console.log("Parsed delay:", delay);  // Debugging log
 
-            const divisor = 20; // Ubah sesuai kebutuhan
+            const divisor = 20;  // Ubah sesuai kebutuhan
 
             if (!isNaN(delay)) {
                 delay = Math.round(delay / divisor);
                 console.log("Processed delay:", delay);  // Debugging log
             }
 
+            // Memperbarui elemen berdasarkan status
             if (status === 'ACTIVE') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>'; 
                 statusElement.style.color = '#00FF00';
@@ -1106,15 +1115,22 @@ function buildCountryFlag() {
                 statusElement.style.color = '#FF3333';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
+            } else {
+                // Untuk status lain yang tidak terduga (misalnya 'UNKNOWN')
+                statusElement.innerHTML = '<strong>' + status + '</strong>';
+                statusElement.style.color = 'gray';
+                statusElement.style.fontSize = '13px';
+                statusElement.style.fontWeight = 'bold';
             }
         })
         .catch(error => {
             const statusElement = document.getElementById('status-${ipPort}');
             statusElement.textContent = 'Error';
             statusElement.style.color = 'cyan';
-            console.error('Error fetching data:', error); // Log error
+            console.error('Error fetching data:', error);  // Log error
         });
 </script>
+
 
 
 
