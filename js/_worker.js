@@ -1015,7 +1015,7 @@ function buildCountryFlag() {
             console.log("Raw latency:", data.latency); // Debugging log
             console.log("Parsed latency:", delay);  // Debugging log
 
-            const divisor = 20;  // Ubah sesuai kebutuhan
+            const divisor = 50;  // Ubah sesuai kebutuhan
 
             if (delay !== 'N/A' && !isNaN(delay)) {
                 delay = Math.round(delay / divisor);  // Proses latensi agar sesuai dengan skala yang diinginkan
@@ -1103,7 +1103,7 @@ function buildCountryFlag() {
             console.log("Raw latency:", data.latency); // Debugging log
             console.log("Parsed latency:", delay);  // Debugging log
 
-            const divisor = 20;  // Ubah sesuai kebutuhan
+            const divisor = 50;  // Ubah sesuai kebutuhan
 
             if (delay !== 'N/A' && !isNaN(delay)) {
                 delay = Math.round(delay / divisor);  // Proses latensi agar sesuai dengan skala yang diinginkan
