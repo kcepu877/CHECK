@@ -11,90 +11,171 @@ enabled = true
 
 
 [[routes]]
-pattern = "user.kere.us.kg"
+pattern = "web.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "freecf.kere.us.kg"
+pattern = "web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.freecf.kere.us.kg"
+pattern = "xvpn.ndeso.web.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.freecf.kere.us.kg"
+pattern = "ava.game.naver.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.freecf.kere.us.kg"
+pattern = "graph.instagram.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.freecf.kere.us.kg"
+pattern = "quiz.int.vidio.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.freecf.kere.us.kg"
+pattern = "live.iflix.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.freecf.kere.us.kg"
+pattern = "support.zoom.us.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.freecf.kere.us.kg"
+pattern = "blog.webex.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.freecf.kere.us.kg"
+pattern = "investors.spotify.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.freecf.kere.us.kg"
+pattern = "cache.netflix.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.freecf.kere.us.kg"
+pattern = "zaintest.vuclip.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.freecf.kere.us.kg"
+pattern = "ads.ruangguru.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.freecf.kere.us.kg"
+pattern = "io.ruangguru.com.web.ndeso.xyz"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.freecf.kere.us.kg"
+pattern = "api.midtrans.com.web.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.web.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.xvpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.wong.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com..wong.ndeso.web.id"
 custom_domain = true
 
-[[routes]]
-pattern = "punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "ava.game.naver.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "graph.instagram.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "quiz.int.vidio.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "live.iflix.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "support.zoom.us.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "blog.webex.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "investors.spotify.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "cache.netflix.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "zaintest.vuclip.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "ads.ruangguru.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "io.ruangguru.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "api.midtrans.com.punya.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "investor.fb.com.punya.bmkg.xyz"
-custom_domain = true
