@@ -1007,36 +1007,41 @@ function buildCountryFlag() {
             const statusElement = document.getElementById('status-${ipPort}');
             const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
 
-            // Ambil data status dan delay
+            // Ambil data status dan delay (latency)
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.delay) || 'N/A';  // Pastikan delay berupa angka
+            let delay = parseFloat(data.latency) || 'N/A';  // Menggunakan latency yang diberikan oleh API
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw delay:", data.delay); // Debugging log
-            console.log("Parsed delay:", delay);  // Debugging log
+            console.log("Raw latency:", data.latency); // Debugging log
+            console.log("Parsed latency:", delay);  // Debugging log
 
             const divisor = 20;  // Ubah sesuai kebutuhan
 
-            if (!isNaN(delay)) {
-                delay = Math.round(delay / divisor);
-                console.log("Processed delay:", delay);  // Debugging log
+            if (delay !== 'N/A' && !isNaN(delay)) {
+                delay = Math.round(delay / divisor);  // Proses latensi agar sesuai dengan skala yang diinginkan
+                console.log("Processed latency:", delay);  // Debugging log
             }
 
             // Memperbarui elemen berdasarkan status
             if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>'; 
-                statusElement.style.color = '#00FF00';
+                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>';
+                statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             } else if (status === 'DEAD') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
-                statusElement.style.color = '#FF3333';
+                statusElement.style.color = '#FF3333';  // Merah
+                statusElement.style.fontSize = '13px';
+                statusElement.style.fontWeight = 'bold';
+            } else if (status === 'UNKNOWN') {
+                statusElement.innerHTML = '<strong>UNKNOWN</strong>';
+                statusElement.style.color = 'gray';  // Abu-abu untuk status UNKNOWN
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             } else {
-                // Untuk status lain yang tidak terduga (misalnya 'UNKNOWN')
+                // Jika status tidak dikenal
                 statusElement.innerHTML = '<strong>' + status + '</strong>';
-                statusElement.style.color = 'gray';
+                statusElement.style.color = 'orange';  // Warna lain untuk status tidak dikenal
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             }
@@ -1044,10 +1049,11 @@ function buildCountryFlag() {
         .catch(error => {
             const statusElement = document.getElementById('status-${ipPort}');
             statusElement.textContent = 'Error';
-            statusElement.style.color = 'cyan';
+            statusElement.style.color = 'cyan';  // Warna cyan untuk error
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
+
 
 
         
@@ -1089,36 +1095,41 @@ function buildCountryFlag() {
             const statusElement = document.getElementById('status-${ipPort}');
             const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
 
-            // Ambil data status dan delay
+            // Ambil data status dan delay (latency)
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.delay) || 'N/A';  // Pastikan delay berupa angka
+            let delay = parseFloat(data.latency) || 'N/A';  // Menggunakan latency yang diberikan oleh API
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw delay:", data.delay); // Debugging log
-            console.log("Parsed delay:", delay);  // Debugging log
+            console.log("Raw latency:", data.latency); // Debugging log
+            console.log("Parsed latency:", delay);  // Debugging log
 
             const divisor = 20;  // Ubah sesuai kebutuhan
 
-            if (!isNaN(delay)) {
-                delay = Math.round(delay / divisor);
-                console.log("Processed delay:", delay);  // Debugging log
+            if (delay !== 'N/A' && !isNaN(delay)) {
+                delay = Math.round(delay / divisor);  // Proses latensi agar sesuai dengan skala yang diinginkan
+                console.log("Processed latency:", delay);  // Debugging log
             }
 
             // Memperbarui elemen berdasarkan status
             if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>'; 
-                statusElement.style.color = '#00FF00';
+                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>';
+                statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             } else if (status === 'DEAD') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
-                statusElement.style.color = '#FF3333';
+                statusElement.style.color = '#FF3333';  // Merah
+                statusElement.style.fontSize = '13px';
+                statusElement.style.fontWeight = 'bold';
+            } else if (status === 'UNKNOWN') {
+                statusElement.innerHTML = '<strong>UNKNOWN</strong>';
+                statusElement.style.color = 'gray';  // Abu-abu untuk status UNKNOWN
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             } else {
-                // Untuk status lain yang tidak terduga (misalnya 'UNKNOWN')
+                // Jika status tidak dikenal
                 statusElement.innerHTML = '<strong>' + status + '</strong>';
-                statusElement.style.color = 'gray';
+                statusElement.style.color = 'orange';  // Warna lain untuk status tidak dikenal
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             }
@@ -1126,10 +1137,11 @@ function buildCountryFlag() {
         .catch(error => {
             const statusElement = document.getElementById('status-${ipPort}');
             statusElement.textContent = 'Error';
-            statusElement.style.color = 'cyan';
+            statusElement.style.color = 'cyan';  // Warna cyan untuk error
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
+
 
 
 
