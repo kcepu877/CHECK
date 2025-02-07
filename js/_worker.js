@@ -1005,25 +1005,27 @@ function buildCountryFlag() {
         .then(response => response.json())
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
+            const spinner = document.getElementById('ping-' + data.ip + ':' + data.port);
 
-            // Ambil data status dan delay
+            // Ambil data status dan latency
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.delay) || 'N/A'; // Pastikan delay berupa angka
+            let latency = data.latency || 'N/A'; // Mengambil latency
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw delay:", data.delay); // Debugging log
-            console.log("Parsed delay:", delay);  // Debugging log
+            console.log("Raw latency:", data.latency); // Debugging log
+            console.log("Parsed latency:", latency);  // Debugging log
 
-            const divisor = 20; // Ubah sesuai kebutuhan
+            // Tentukan divisor untuk delay jika perlu (misalnya, dibagi dengan 20)
+            const divisor = 20;
 
-            if (!isNaN(delay)) {
-                delay = Math.round(delay / divisor);
-                console.log("Processed delay:", delay);  // Debugging log
+            if (latency !== 'N/A' && !isNaN(latency)) {
+                latency = Math.round(parseFloat(latency) / divisor); 
+                console.log("Processed latency:", latency);  // Debugging log
             }
 
+            // Update status berdasarkan status yang didapat dari API
             if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>'; 
+                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + latency + 'ms)</span>'; 
                 statusElement.style.color = '#00FF00';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
@@ -1041,6 +1043,7 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error); // Log error
         });
 </script>
+
 
         
 
@@ -1079,25 +1082,27 @@ function buildCountryFlag() {
         .then(response => response.json())
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
+            const spinner = document.getElementById('ping-' + data.ip + ':' + data.port);
 
-            // Ambil data status dan delay
+            // Ambil data status dan latency
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.delay) || 'N/A'; // Pastikan delay berupa angka
+            let latency = data.latency || 'N/A'; // Mengambil latency
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw delay:", data.delay); // Debugging log
-            console.log("Parsed delay:", delay);  // Debugging log
+            console.log("Raw latency:", data.latency); // Debugging log
+            console.log("Parsed latency:", latency);  // Debugging log
 
-            const divisor = 20; // Ubah sesuai kebutuhan
+            // Tentukan divisor untuk delay jika perlu (misalnya, dibagi dengan 20)
+            const divisor = 20;
 
-            if (!isNaN(delay)) {
-                delay = Math.round(delay / divisor);
-                console.log("Processed delay:", delay);  // Debugging log
+            if (latency !== 'N/A' && !isNaN(latency)) {
+                latency = Math.round(parseFloat(latency) / divisor); 
+                console.log("Processed latency:", latency);  // Debugging log
             }
 
+            // Update status berdasarkan status yang didapat dari API
             if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>'; 
+                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + latency + 'ms)</span>'; 
                 statusElement.style.color = '#00FF00';
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
