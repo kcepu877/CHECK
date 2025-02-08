@@ -980,7 +980,7 @@ function buildCountryFlag() {
             </div>
                         </td>
                                         
-                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="rainbow-text">LOADING...</div></td>
+                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="rainbow-text">Loading...</div></td>
 
                     
                     <td class="button-cell">
@@ -1029,7 +1029,7 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
+            if (status === 'ACTIVE') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
@@ -1077,7 +1077,7 @@ function buildCountryFlag() {
             <span class="flag-circle flag-icon flag-icon-${config.countryCode.toLowerCase()}"></span>
             </div>
                         </td>
-                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="rainbow-text">LOADING...</div></td>
+                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="rainbow-text">Loading...</div></td>
                     
                     <td class="button-cell">
                         <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path.toUpperCase())}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
@@ -1124,7 +1124,7 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
+            if (status === 'ACTIVE') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
@@ -1237,7 +1237,41 @@ function buildCountryFlag() {
       85% { color: violet; }
       100% { color: red; }
     }
-    
+    /* Spinner dengan animasi warna */
+.loading-icon {
+  font-size: 50px; /* Ukuran spinner */
+  animation: colorChange 1.5s linear infinite, spin 1s linear infinite;
+}
+
+/* Animasi berputar */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animasi perubahan warna */
+@keyframes colorChange {
+  0% {
+    color: red; /* Warna pertama */
+  }
+  25% {
+    color: yellow; /* Warna kedua */
+  }
+  50% {
+    color: green; /* Warna ketiga */
+  }
+  75% {
+    color: blue; /* Warna keempat */
+  }
+  100% {
+    color: purple; /* Warna kelima */
+  }
+}
+
       .spinner {
   border: 4px solid #f3f3f3; /* Light grey */
   border-top: 4px solid #3498db; /* Blue */
