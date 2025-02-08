@@ -1009,15 +1009,15 @@ function buildCountryFlag() {
 
             // Ambil data status
             const status = data.status || 'UNKNOWN';
-            let delay = data.latency || 'N/A';  // Ambil latency dari API
+            let delay = data.delay || 'N/A';  // Ambil delay yang sudah diproses dari API
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw latency:", delay); // Debugging log
+            console.log("Raw delay:", delay); // Debugging log
 
             const divisor = 10;  // Ubah sesuai kebutuhan
 
             if (delay !== 'N/A') {
-                // Hilangkan "ms" dan ubah menjadi angka
+                // Hapus "ms" dan ubah menjadi angka
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
@@ -1029,7 +1029,7 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE') {
+            if (status === 'ACTIVE ✅') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
@@ -1059,6 +1059,7 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
+
 
 
 
@@ -1103,15 +1104,15 @@ function buildCountryFlag() {
 
             // Ambil data status
             const status = data.status || 'UNKNOWN';
-            let delay = data.latency || 'N/A';  // Ambil latency dari API
+            let delay = data.delay || 'N/A';  // Ambil delay yang sudah diproses dari API
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw latency:", delay); // Debugging log
+            console.log("Raw delay:", delay); // Debugging log
 
             const divisor = 10;  // Ubah sesuai kebutuhan
 
             if (delay !== 'N/A') {
-                // Hilangkan "ms" dan ubah menjadi angka
+                // Hapus "ms" dan ubah menjadi angka
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
@@ -1123,7 +1124,7 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE') {
+            if (status === 'ACTIVE ✅') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
@@ -1153,6 +1154,7 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
+
 
 
 
