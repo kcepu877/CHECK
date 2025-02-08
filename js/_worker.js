@@ -1014,7 +1014,7 @@ function buildCountryFlag() {
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", delay); // Debugging log
 
-            const divisor = 10;  // Ubah sesuai kebutuhan
+            const divisor = 0;  // Ubah sesuai kebutuhan
 
             if (delay !== 'N/A') {
                 // Hapus "ms" dan ubah menjadi angka
@@ -1109,7 +1109,7 @@ function buildCountryFlag() {
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", delay); // Debugging log
 
-            const divisor = 10;  // Ubah sesuai kebutuhan
+            const divisor = 0;  // Ubah sesuai kebutuhan
 
             if (delay !== 'N/A') {
                 // Hapus "ms" dan ubah menjadi angka
