@@ -1237,14 +1237,7 @@ function buildCountryFlag() {
       85% { color: violet; }
       100% { color: red; }
     }
-    /* Spinner dengan animasi warna */
-.loading-icon {
-  font-size: 50px; /* Ukuran spinner */
-  animation: colorChange 1.5s linear infinite, spin 1s linear infinite;
-}
-
-/* Animasi berputar */
-@keyframes spin {
+    @keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
@@ -1253,23 +1246,25 @@ function buildCountryFlag() {
   }
 }
 
-/* Animasi perubahan warna */
-@keyframes colorChange {
-  0% {
-    color: red; /* Warna pertama */
-  }
-  25% {
-    color: yellow; /* Warna kedua */
-  }
-  50% {
-    color: green; /* Warna ketiga */
-  }
-  75% {
-    color: blue; /* Warna keempat */
-  }
-  100% {
-    color: purple; /* Warna kelima */
-  }
+.loading-icon {
+  font-size: 40px;
+  animation: rotate 1s linear infinite;
+  color: #f00; /* default color */
+}
+
+.loading-icon:before {
+  content: '\f110'; /* spinner icon */
+  font-family: 'FontAwesome';
+  color: red;
+  animation: spinColors 1.2s linear infinite;
+}
+
+@keyframes spinColors {
+  0% { color: red; }
+  25% { color: yellow; }
+  50% { color: green; }
+  75% { color: blue; }
+  100% { color: purple; }
 }
 
       .spinner {
