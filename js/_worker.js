@@ -1304,10 +1304,10 @@ function buildCountryFlag() {
 
 @keyframes moveColors {
   100% {
-    background-position: -100%; /* Mulai dari luar kiri */
+    background-position: -50%; /* Mulai dari luar kiri */
   }
   0% {
-    background-position: 200%; /* Bergerak ke kanan */
+    background-position: 250%; /* Bergerak ke kanan */
   }
 }
 
@@ -1319,7 +1319,7 @@ function buildCountryFlag() {
   background-size: 200%;
   color: transparent;
   -webkit-background-clip: text;
-  animation: moveColors 60s linear infinite;
+  animation: moveColors 3s linear infinite;
 }
 
      h1 {
