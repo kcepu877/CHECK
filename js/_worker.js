@@ -1302,24 +1302,24 @@ function buildCountryFlag() {
   100% { background-position: 0% 50%; }
 }
 
-@keyframes colorMove {
+@keyframes moveColors {
   0% {
-    background-position: 0%;
+    background-position: -200%;
   }
   100% {
-    background-position: 100%;
+    background-position: 200%;
   }
 }
 
 .warna-text {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   display: inline-block;
-  background: linear-gradient(90deg, red, yellow, green, blue, purple);
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
   background-size: 200%;
   color: transparent;
   -webkit-background-clip: text;
-  animation: colorMove 2s linear infinite;
+  animation: moveColors 3s linear infinite;
 }
 
 
