@@ -1565,29 +1565,15 @@ function buildCountryFlag() {
 }
 
 .quantum-container {
-  background-color: rgba(0, 0, 0, 0.82);
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-top: 95px;
-  margin-bottom: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  border: 5px solid transparent; /* Untuk border transparan agar animasi terlihat */
-  border-radius: 10px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-
-  /* Glow efek */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 
-              0 0 30px rgba(0, 150, 255, 0.5);
-
-  /* Animasi border bergerak */
-  animation: moveBorder 4s linear infinite;
-}
+  bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: -webkit-gradient(linear, left top, right top, from(rgba(43, 8, 8, 0)), to(#0f0));
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        -webkit-animation: 2s animateBottom linear infinite;
+        animation: 2s animateBottom linear infinite;
+      }
 
 
 
