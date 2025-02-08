@@ -1304,10 +1304,10 @@ function buildCountryFlag() {
 
 @keyframes moveColors {
   0% {
-    background-position: -200%;
+    background-position: -100%; /* Mulai dari luar kiri */
   }
   100% {
-    background-position: 200%;
+    background-position: 100%; /* Bergerak ke kanan */
   }
 }
 
@@ -1321,7 +1321,6 @@ function buildCountryFlag() {
   -webkit-background-clip: text;
   animation: moveColors 3s linear infinite;
 }
-
 
      h1 {
       font-family: 'Rajdhani', sans-serif;
