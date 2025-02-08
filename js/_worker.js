@@ -1304,7 +1304,7 @@ function buildCountryFlag() {
 
 @keyframes moveColors {
   100% {
-    background-position: 100%; /* Mulai dari luar kiri */
+    background-position: -100%; /* Mulai dari luar kiri */
   }
   0% {
     background-position: 200%; /* Bergerak ke kanan */
