@@ -1319,7 +1319,7 @@ function buildCountryFlag() {
   background-size: 200%;
   color: transparent;
   -webkit-background-clip: text;
-  animation: moveColors 3s linear infinite;
+  animation: moveColors 60s linear infinite;
 }
 
      h1 {
