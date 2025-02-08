@@ -1034,7 +1034,7 @@ function buildCountryFlag() {
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD') {
+            } else if (status === 'DEAD ❌') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
@@ -1129,7 +1129,7 @@ function buildCountryFlag() {
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD') {
+            } else if (status === 'DEAD ❌') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
