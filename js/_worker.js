@@ -1531,53 +1531,11 @@ function buildCountryFlag() {
 
 
 
-@keyframes moveBorder {
-  0% {
-    border-top-color: #ff0000; /* Titik warna mulai di kiri */
-    border-right-color: #ff7300;
-    border-bottom-color: #fffb00;
-    border-left-color: #48ff00;
-  }
-  25% {
-    border-top-color: #ff7300; /* Bergerak ke kanan */
-    border-right-color: #fffb00;
-    border-bottom-color: #48ff00;
-    border-left-color: #00ffd5;
-  }
-  50% {
-    border-top-color: #fffb00; /* Bergerak ke bawah */
-    border-right-color: #48ff00;
-    border-bottom-color: #00ffd5;
-    border-left-color: #002bff;
-  }
-  75% {
-    border-top-color: #48ff00; /* Bergerak ke kiri */
-    border-right-color: #00ffd5;
-    border-bottom-color: #002bff;
-    border-left-color: #7a00ff;
-  }
-  100% {
-    border-top-color: #00ffd5; /* Bergerak ke atas */
-    border-right-color: #002bff;
-    border-bottom-color: #7a00ff;
-    border-left-color: #ff0000;
-  }
-}
-
-.quantum-container {
-  bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: -webkit-gradient(linear, left top, right top, from(rgba(43, 8, 8, 0)), to(#0f0));
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-        -webkit-animation: 2s animateBottom linear infinite;
-        animation: 2s animateBottom linear infinite;
-      }
 
 
 
-      .quantum-container33 {
+
+      .quantum-container {
   background-color: rgba(0, 0, 0, 0.82);
   flex: 1;
   padding-top: 20px; /* To avoid content being hidden under the header */
