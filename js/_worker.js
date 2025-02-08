@@ -1530,28 +1530,43 @@ function buildCountryFlag() {
 }
 
 
-@keyframes borderAnimation {
+@keyframes borderMove {
   0% {
-    border-image: linear-gradient(0deg, red, orange, yellow, green, blue, purple) 1;
+    border-top-color: red;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
   }
   25% {
-    border-image: linear-gradient(90deg, red, orange, yellow, green, blue, purple) 1;
+    border-top-color: transparent;
+    border-right-color: orange;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
   }
   50% {
-    border-image: linear-gradient(180deg, red, orange, yellow, green, blue, purple) 1;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: yellow;
+    border-left-color: transparent;
   }
   75% {
-    border-image: linear-gradient(270deg, red, orange, yellow, green, blue, purple) 1;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: green;
   }
   100% {
-    border-image: linear-gradient(0deg, red, orange, yellow, green, blue, purple) 1;
+    border-top-color: red;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
   }
 }
 
 .quantum-container {
   background-color: rgba(0, 0, 0, 0.82);
   flex: 1;
-  padding-top: 20px; /* To avoid content being hidden under the header */
+  padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 95px;
   margin-bottom: 50px;
@@ -1560,24 +1575,28 @@ function buildCountryFlag() {
   display: flex;
   flex-direction: column;
   max-width: 960px;
-  border: 10px solid transparent;
+  border: 5px solid transparent;
   border-radius: 10px;
   align-items: center;
   position: relative;
   z-index: 1;
 
+  /* Border dengan efek animasi */
+  border-top: 5px solid red;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid transparent;
+  animation: borderMove 4s linear infinite;
+
   /* Tambahkan efek glow */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 
+              0 0 30px rgba(0, 150, 255, 0.5);   
 
   /* Default untuk HP */
   margin-left: auto;
   margin-right: auto;
-
-  /* Animasi border */
-  animation: borderAnimation 5s linear infinite; /* Durasi animasi 5 detik */
-  border-image-slice: 1;
 }
+
 
 
       .quantum-container33 {
