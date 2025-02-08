@@ -1530,42 +1530,42 @@ function buildCountryFlag() {
 }
 
 
-@keyframes borderMove {
+
+@keyframes moveBorder {
   0% {
-    border-top-color: red;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    border-top-color: #ff0000; /* Titik warna mulai di kiri */
+    border-right-color: #ff7300;
+    border-bottom-color: #fffb00;
+    border-left-color: #48ff00;
   }
   25% {
-    border-top-color: transparent;
-    border-right-color: orange;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    border-top-color: #ff7300; /* Bergerak ke kanan */
+    border-right-color: #fffb00;
+    border-bottom-color: #48ff00;
+    border-left-color: #00ffd5;
   }
   50% {
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: yellow;
-    border-left-color: transparent;
+    border-top-color: #fffb00; /* Bergerak ke bawah */
+    border-right-color: #48ff00;
+    border-bottom-color: #00ffd5;
+    border-left-color: #002bff;
   }
   75% {
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: green;
+    border-top-color: #48ff00; /* Bergerak ke kiri */
+    border-right-color: #00ffd5;
+    border-bottom-color: #002bff;
+    border-left-color: #7a00ff;
   }
   100% {
-    border-top-color: red;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    border-top-color: #00ffd5; /* Bergerak ke atas */
+    border-right-color: #002bff;
+    border-bottom-color: #7a00ff;
+    border-left-color: #ff0000;
   }
 }
 
 .quantum-container {
   background-color: rgba(0, 0, 0, 0.82);
-  flex: 1;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-top: 95px;
@@ -1575,26 +1575,18 @@ function buildCountryFlag() {
   display: flex;
   flex-direction: column;
   max-width: 960px;
-  border: 5px solid transparent;
+  border: 5px solid transparent; /* Untuk border transparan agar animasi terlihat */
   border-radius: 10px;
   align-items: center;
   position: relative;
   z-index: 1;
 
-  /* Border dengan efek animasi */
-  border-top: 5px solid red;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid transparent;
-  animation: borderMove 4s linear infinite;
-
-  /* Tambahkan efek glow */
+  /* Glow efek */
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 
-              0 0 30px rgba(0, 150, 255, 0.5);   
+              0 0 30px rgba(0, 150, 255, 0.5);
 
-  /* Default untuk HP */
-  margin-left: auto;
-  margin-right: auto;
+  /* Animasi border bergerak */
+  animation: moveBorder 4s linear infinite;
 }
 
 
