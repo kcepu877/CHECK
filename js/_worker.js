@@ -1029,7 +1029,7 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE') {
+            if (status === 'ACTIVE ✅') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
@@ -1124,7 +1124,7 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE') {
+            if (status === 'ACTIVE ✅') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
