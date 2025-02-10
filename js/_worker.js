@@ -881,20 +881,23 @@ async function handleWebRequest(request) {
    
 
 
-    const generateUUIDv4 = () => {
-  const bytes = new Uint8Array(16);
-  crypto.getRandomValues(bytes);
+    export default {
+  async fetch(request, env) {
+    const ttl = 2592000; // 30 hari dalam detik (30 * 24 * 60 * 60)
 
-  // Atur versi (UUID v4)
-  bytes[6] = (bytes[6] & 0x0f) | 0x40;
-  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    // Buat UUID baru
+    const uuid = crypto.randomUUID();
 
-  return [...bytes]
-    .map((b, i) => (i === 4 || i === 6 || i === 8 || i === 10 ? '-' : '') + b.toString(16).padStart(2, '0'))
-    .join('');
+    // Simpan UUID baru ke KV dengan TTL 30 hari
+    await env.UUID_STORAGE.put(uuid, "valid", { expirationTtl: ttl });
+
+    // Kembalikan UUID yang baru dibuat
+    return new Response(uuid, {
+      headers: { "Content-Type": "text/plain" },
+    });
+  },
 };
 
-console.log(generateUUIDv4());
 
 
 function buildCountryFlag() {
