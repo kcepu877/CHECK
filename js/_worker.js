@@ -882,20 +882,12 @@ async function handleWebRequest(request) {
 
 
     const generateUUIDv4 = () => {
-  const bytes = new Uint8Array(16);
-  crypto.getRandomValues(bytes);
-
-  // Atur versi (UUID v4)
-  bytes[6] = (bytes[6] & 0x0f) | 0x40;
-  bytes[8] = (bytes[8] & 0x3f) | 0x80;
-
-  return [...bytes]
-    .map((b, i) => (i === 4 || i === 6 || i === 8 || i === 10 ? '-' : '') + b.toString(16).padStart(2, '0'))
-    .join('');
-};
-
-console.log(generateUUIDv4());
-
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+        const r = (Math.random() * 16) | 0;
+        const v = c === 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+    };
 
 function buildCountryFlag() {
   const flagList = cachedProxyList.map((proxy) => proxy.country);
@@ -929,7 +921,9 @@ function buildCountryFlag() {
     };
 
     const url = new URL(request.url);
-    const hostName = url.hostname;// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
+    const hostNameFromRequest = url.hostname;
+    const hostName = url.hostname;
+// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
     const selectedWildcard = url.searchParams.get('wildcard') || '';
@@ -1008,6 +1002,7 @@ function buildCountryFlag() {
                     </td>
                 </tr>
 
+
 <script>
     fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
         .then(response => response.json())
@@ -1067,8 +1062,6 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
-
-
 
 
         
@@ -1103,6 +1096,7 @@ function buildCountryFlag() {
                         </button>
                     </td>
                 </tr>
+
 <script>
     fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
         .then(response => response.json())
@@ -1162,9 +1156,6 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
-
-
-
 
 
 
@@ -1274,7 +1265,6 @@ function buildCountryFlag() {
   75% { color: blue; }
   100% { color: purple; }
 }
-
       .spinner {
   border: 4px solid #f3f3f3; /* Light grey */
   border-top: 4px solid #3498db; /* Blue */
@@ -1309,7 +1299,6 @@ function buildCountryFlag() {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
 @keyframes moveColors {
   100% {
     background-position: -200%; /* Mulai dari luar kiri */
@@ -1329,6 +1318,7 @@ function buildCountryFlag() {
   -webkit-background-clip: text;
   animation: moveColors 5s linear infinite;
 }
+
 
      h1 {
       font-family: 'Rajdhani', sans-serif;
@@ -1536,12 +1526,6 @@ function buildCountryFlag() {
   color: #fff; /* Warna teks untuk baris genap */
   background-color: rgba(3, 117, 1, 0.87); /* Warna latar belakang untuk baris genap */
 }
-
-
-
-
-
-
 
       .quantum-container {
   background-color: rgba(0, 0, 0, 0.82);
@@ -2508,11 +2492,11 @@ async function protocolSniffer(buffer) {
     }
   }
 
-  const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
-  // Hanya mendukung UUID v4
-  if (arrayBufferToHex(vlessDelimiter).match(/^\w{8}\w{4}4\w{3}[89ab]\w{3}\w{12}$/)) {
-    return "VLESS";
-  }
+  const vlessDelimiter = new Uint8Array(buffer.slice(1, buffer.length));
+if (arrayBufferToHex(vlessDelimiter).match(/^[\s\S]+$/)) {
+  return "VLESS";
+}
+
 
   return "Shadowsocks"; // default
 }
