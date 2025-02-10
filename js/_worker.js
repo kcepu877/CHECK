@@ -2483,27 +2483,23 @@ async function websockerHandler(request) {
 async function protocolSniffer(buffer) {
   if (buffer.byteLength >= 62) {
     const trojanDelimiter = new Uint8Array(buffer.slice(56, 60));
-if (trojanDelimiter[0] === 0x0d && trojanDelimiter[1] === 0x0a) {
-  if (trojanDelimiter[2] === 0x01 || trojanDelimiter[2] === 0x03 || trojanDelimiter[2] === 0x7f) {
-    if (trojanDelimiter[3] === 0x01 || trojanDelimiter[3] === 0x03 || trojanDelimiter[3] === 0x04) {
-      return "Trojan";
+    if (trojanDelimiter[0] === 0x0d && trojanDelimiter[1] === 0x0a) {
+      if (trojanDelimiter[2] === 0x01 || trojanDelimiter[2] === 0x03 || trojanDelimiter[2] === 0x7f) {
+        if (trojanDelimiter[3] === 0x01 || trojanDelimiter[3] === 0x03 || trojanDelimiter[3] === 0x04) {
+          return "Trojan";
+        }
+      }
     }
   }
+
+  const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
+  // Hanya mendukung UUID v4
+  if (arrayBufferToHex(vlessDelimiter).match(/^\w{8}\w{4}4\w{3}[89ab]\w{3}\w{12}$/)) {
+    return "VLESS";
+  }
+
+  return "Shadowsocks"; // default
 }
-
-const vlessDelimiter = new Uint8Array(buffer.slice(1, buffer.length));
-if (arrayBufferToHex(vlessDelimiter).match(/^[\s\S]+$/)) {
-  return "VLESS";
-}
-
-// Shadowsocks delimiter check
-const shadowsocksDelimiter = new Uint8Array(buffer.slice(0, 2));  // Misalnya, kita memeriksa 2 byte pertama
-if (shadowsocksDelimiter[0] === 0x05 && shadowsocksDelimiter[1] === 0x01) {
-  return "Shadowsocks";
-}
-
-return "Unknown"; // Default jika tidak cocok dengan Trojan, VLESS, atau Shadowsocks
-
 
 async function handleTCPOutBound(
   remoteSocket,
