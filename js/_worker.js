@@ -881,7 +881,8 @@ async function handleWebRequest(request) {
    
 
 
-    function generateUUIDv4() {
+    // Fungsi untuk menghasilkan UUID v4
+function generateUUIDv4() {
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
 
@@ -894,11 +895,12 @@ async function handleWebRequest(request) {
     .join('');
 }
 
+// Fungsi untuk menangani permintaan
 async function handleRequest(request, env) {
   const ttl = 2592000; // 30 hari dalam detik (30 * 24 * 60 * 60)
 
   // Buat UUID baru dengan generateUUIDv4
- 
+  const uuid = generateUUIDv4();
 
   // Simpan UUID baru ke KV dengan TTL 30 hari
   await env.UUID_STORAGE.put(uuid, "valid", { expirationTtl: ttl });
@@ -913,6 +915,7 @@ async function handleRequest(request, env) {
 addEventListener("fetch", (event) => {
   event.respondWith(handleRequest(event.request, event));
 });
+
 
 
 
