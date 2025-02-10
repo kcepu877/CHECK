@@ -9,6 +9,10 @@ enabled = true
 [observability.logs]
 enabled = true
 
+[[kv_namespaces]]
+binding = "UUID_STORAGE"
+id = "4d2115c565d6402d891344b8e7e1c119"
+
 
 [[routes]]
 pattern = "web.bmkg.xyz"
