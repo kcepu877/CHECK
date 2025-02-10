@@ -881,20 +881,23 @@ async function handleWebRequest(request) {
    
 
 
-    async function handleRequest(request, env) {
-  const ttl = 180; // 30 hari dalam detik (30 * 24 * 60 * 60)
+    export default {
+  async fetch(request, env) {
+    const ttl = 180; // 30 hari dalam detik (30 * 24 * 60 * 60)
 
-  // Buat UUID baru
-  const uuid = crypto.randomUUID();
+    // Buat UUID baru
+    const uuid = crypto.randomUUID();
 
-  // Simpan UUID baru ke KV dengan TTL 30 hari
-  await env.UUID_STORAGE.put(uuid, "valid", { expirationTtl: ttl });
+    // Simpan UUID baru ke KV dengan TTL 30 hari
+    await env.UUID_STORAGE.put(uuid, "valid", { expirationTtl: ttl });
 
-  // Kembalikan UUID yang baru dibuat
-  return new Response(uuid, {
-    headers: { "Content-Type": "text/plain" },
-  });
-}
+    // Kembalikan UUID yang baru dibuat
+    return new Response(uuid, {
+      headers: { "Content-Type": "text/plain" },
+    });
+  },
+};
+
 
 
 
