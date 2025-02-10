@@ -881,41 +881,20 @@ async function handleWebRequest(request) {
    
 
 
-    function generateUUIDv4() {
+    const generateUUIDv4 = () => {
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
 
-  // Atur versi UUID v4
+  // Atur versi (UUID v4)
   bytes[6] = (bytes[6] & 0x0f) | 0x40;
   bytes[8] = (bytes[8] & 0x3f) | 0x80;
 
   return [...bytes]
     .map((b, i) => (i === 4 || i === 6 || i === 8 || i === 10 ? '-' : '') + b.toString(16).padStart(2, '0'))
     .join('');
-}
+};
 
-async function handleRequest(request, env) {
-  const ttl = 2592000; // 30 hari dalam detik (30 * 24 * 60 * 60)
-
-  // Buat UUID baru dengan generateUUIDv4
- 
-
-  // Simpan UUID baru ke KV dengan TTL 30 hari
-  await env.UUID_STORAGE.put(uuid, "valid", { expirationTtl: ttl });
-
-  // Kembalikan UUID yang baru dibuat
-  return new Response(uuid, {
-    headers: { "Content-Type": "text/plain" },
-  });
-}
-
-// Pastikan event listener untuk fetch
-addEventListener("fetch", (event) => {
-  event.respondWith(handleRequest(event.request, event));
-});
-
-
-
+console.log(generateUUIDv4());
 
 
 function buildCountryFlag() {
@@ -2990,7 +2969,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${crypto.randomUUID()()}`;
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
     const snioo = tls ? `\n  cipher: auto` : '';
