@@ -881,11 +881,24 @@ async function handleWebRequest(request) {
    
 
 
-    async function handleRequest(request, env) {
-  const ttl = 180; // 30 hari dalam detik (30 * 24 * 60 * 60)
+    function generateUUIDv4() {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
 
-  // Buat UUID baru
-  const uuid = crypto.randomUUID();
+  // Atur versi UUID v4
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+
+  return [...bytes]
+    .map((b, i) => (i === 4 || i === 6 || i === 8 || i === 10 ? '-' : '') + b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+async function handleRequest(request, env) {
+  const ttl = 2592000; // 30 hari dalam detik (30 * 24 * 60 * 60)
+
+  // Buat UUID baru dengan generateUUIDv4
+ 
 
   // Simpan UUID baru ke KV dengan TTL 30 hari
   await env.UUID_STORAGE.put(uuid, "valid", { expirationTtl: ttl });
@@ -896,11 +909,10 @@ async function handleWebRequest(request) {
   });
 }
 
-// Tentukan handler untuk Worker
-addEventListener("fetch", event => {
+// Pastikan event listener untuk fetch
+addEventListener("fetch", (event) => {
   event.respondWith(handleRequest(event.request, event));
 });
-
 
 
 
@@ -978,7 +990,7 @@ function buildCountryFlag() {
 
     const tableRows = visibleConfigs
       .map((config) => {
-        const uuid = crypto.randomUUID();
+       
         const wildcard = selectedWildcard || hostName;
         const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
         const url = new URL(request.url);
@@ -2978,7 +2990,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${crypto.randomUUID()}`;
+    const UUIDS = `${crypto.randomUUID()()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
     const snioo = tls ? `\n  cipher: auto` : '';
@@ -3295,7 +3307,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${crypto.randomUUID()}`;
+    const UUIDS = `${generateUUIDv4()}`;
     if (type === 'trojan') {
       bmkg+= `${ispName},`
       conf += `
@@ -3663,7 +3675,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${crypto.randomUUID()}`;
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
@@ -4001,7 +4013,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${crypto.randomUUID()}`;
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "enabled": true,\n        "server_name": "${wildcrd}",\n        "insecure": true\n      },` : '';
     if (type === 'vless') {
@@ -4293,7 +4305,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${crypto.randomUUID()}`;
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
@@ -4626,7 +4638,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
     const ispInfo = `${countryText} ${isp}`;
-    const UUIDS = `${crypto.randomUUID()}`;
+    const UUIDS = `${generateUUIDv4()}`;
 
     if (type === 'vless') {
       if (tls) {
@@ -4692,7 +4704,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     const proxyHost = parts[0];
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
-    const UUIDS = crypto.randomUUID();
+    const UUIDS = generateUUIDv4();
     const information = encodeURIComponent(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]}`);
     if (type === 'vless') {
       if (tls) {
@@ -4727,8 +4739,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   
   return conf;
 }
-const uuid = crypto.randomUUID();
- {
+function generateUUIDv4() {
   const randomValues = crypto.getRandomValues(new Uint8Array(16));
   randomValues[6] = (randomValues[6] & 0x0f) | 0x40;
   randomValues[8] = (randomValues[8] & 0x3f) | 0x80;
