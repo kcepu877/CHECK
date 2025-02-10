@@ -882,7 +882,7 @@ async function handleWebRequest(request) {
 
 
     async function handleRequest(request, env) {
-  const ttl = 2592000; // 30 hari dalam detik (30 * 24 * 60 * 60)
+  const ttl = 180; // 30 hari dalam detik (30 * 24 * 60 * 60)
 
   // Buat UUID baru
   const uuid = crypto.randomUUID();
@@ -971,7 +971,7 @@ function buildCountryFlag() {
 
     const tableRows = visibleConfigs
       .map((config) => {
-        const uuid = generateUUIDv4();
+        const uuid = crypto.randomUUID();
         const wildcard = selectedWildcard || hostName;
         const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
         const url = new URL(request.url);
@@ -2971,7 +2971,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${generateUUIDv4()}`;
+    const UUIDS = `${crypto.randomUUID()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
     const snioo = tls ? `\n  cipher: auto` : '';
@@ -3288,7 +3288,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${generateUUIDv4()}`;
+    const UUIDS = `${crypto.randomUUID()}`;
     if (type === 'trojan') {
       bmkg+= `${ispName},`
       conf += `
@@ -3656,7 +3656,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${generateUUIDv4()}`;
+    const UUIDS = `${crypto.randomUUID()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
@@ -3994,7 +3994,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${generateUUIDv4()}`;
+    const UUIDS = `${crypto.randomUUID()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "enabled": true,\n        "server_name": "${wildcrd}",\n        "insecure": true\n      },` : '';
     if (type === 'vless') {
@@ -4286,7 +4286,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
-    const UUIDS = `${generateUUIDv4()}`;
+    const UUIDS = `${crypto.randomUUID()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
@@ -4619,7 +4619,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
     const ispInfo = `${countryText} ${isp}`;
-    const UUIDS = `${generateUUIDv4()}`;
+    const UUIDS = `${crypto.randomUUID()}`;
 
     if (type === 'vless') {
       if (tls) {
@@ -4685,7 +4685,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     const proxyHost = parts[0];
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
-    const UUIDS = generateUUIDv4();
+    const UUIDS = crypto.randomUUID();
     const information = encodeURIComponent(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]}`);
     if (type === 'vless') {
       if (tls) {
@@ -4720,7 +4720,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   
   return conf;
 }
-function generateUUIDv4() {
+function crypto.randomUUID() {
   const randomValues = crypto.getRandomValues(new Uint8Array(16));
   randomValues[6] = (randomValues[6] & 0x0f) | 0x40;
   randomValues[8] = (randomValues[8] & 0x3f) | 0x80;
