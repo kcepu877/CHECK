@@ -4720,7 +4720,8 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   
   return conf;
 }
-function crypto.randomUUID() {
+const uuid = crypto.randomUUID();
+ {
   const randomValues = crypto.getRandomValues(new Uint8Array(16));
   randomValues[6] = (randomValues[6] & 0x0f) | 0x40;
   randomValues[8] = (randomValues[8] & 0x3f) | 0x80;
