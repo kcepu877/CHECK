@@ -2492,7 +2492,12 @@ async function protocolSniffer(buffer) {
     }
   }
 
-  const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
+  const vlessDelimiter = new Uint8Array(buffer.slice(1, buffer.length));
+if (arrayBufferToHex(vlessDelimiter).match(/^[\s\S]+$/)) {
+  return "VLESS";
+}
+
+const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
   // Hanya mendukung UUID v4
   if (arrayBufferToHex(vlessDelimiter).match(/^\w{8}\w{4}4\w{3}[89ab]\w{3}\w{12}$/)) {
     return "VLESS";
