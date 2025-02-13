@@ -3279,7 +3279,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     if (type === 'trojan') {
       bmkg+= `${ispName},`
       conf += `
-${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${proxyHost}:${proxyPort}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${proxyHost}-${proxyPort}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
   return `#### BY : GEO PROJECT #### 
