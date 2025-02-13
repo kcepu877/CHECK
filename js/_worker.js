@@ -3060,7 +3060,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
       custom: ${wildcrd}`;
     }
   }
-  return `#### BY : GEO PROJECT #### 
+  return `#### BY : FREE CF PROXY #### 
 
 port: 7890
 socks-port: 7891
@@ -3279,7 +3279,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
 ${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${proxyHost}-${proxyPort}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
-  return `#### BY : GEO PROJECT #### 
+  return `#### BY : FREE CF PROXY #### 
 
 [General]
 dns-server = system, 108.137.44.39, 108.137.44.9, puredns.org:853
@@ -3769,7 +3769,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     },`;
     }
   }
-  return `#### BY : GEO PROJECT #### 
+  return `#### BY : FREE CF PROXY #### 
 
 {
   "dns": {
@@ -4097,7 +4097,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     },`;
     }
   }
-  return `#### BY : GEO PROJECT #### 
+  return `#### BY : FREE CF PROXY #### 
 
 {
   "log": {
@@ -4399,7 +4399,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     },`;
     }
   }
-  return `#### BY : GEO PROJECT #### 
+  return `#### BY : FREE CF PROXY #### 
 
 {
   "dns": {
