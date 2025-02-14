@@ -866,13 +866,20 @@ async function handleWebRequest(request) {
 
                 const path = `/FreeProxy/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
-		    console.log("Generated Path:", path);
+		    console.log("Generated Path:", path); // Logging di sini
 
+		    
+		    
 
                 // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
                 return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
             });
 
+		console.log("Original Path:", url.pathname);
+                    console.log("Generated Paths:", configs.map(p => p.path));
+
+
+		
             return configs;
         } catch (error) {
             console.error('Error fetching configurations:', error);
