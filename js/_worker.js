@@ -864,7 +864,6 @@ async function handleWebRequest(request) {
             const configs = text.trim().split('\n').map((line) => {
                 const [ip, port, countryCode, isp] = line.split(',');
 
-                // Pastikan ip dan port ada, jika tidak skip baris ini
                 if (!ip || !port) {
                     return null;
                 }
@@ -896,9 +895,19 @@ async function handleWebRequest(request) {
 
     // Panggil fungsi fetchConfigs untuk mendapatkan data
     const proxies = await fetchConfigs();
-    return new Response(JSON.stringify(proxies, null, 2), {
-        headers: { 'Content-Type': 'application/json' }
+
+    // Kirim data JSON ke localStorage dan arahkan pengguna kembali ke halaman utama
+    const script = `
+        <script>
+            localStorage.setItem('proxiesData', '${JSON.stringify(proxies)}');
+            window.location.href = '/'; // Arahkan pengguna ke halaman utama
+        </script>
+    `;
+    
+    return new Response(script, {
+        headers: { 'Content-Type': 'text/html' }
     });
+
 
 
 
