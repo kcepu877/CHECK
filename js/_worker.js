@@ -891,7 +891,18 @@ async function handleWebRequest(request) {
 
     // Panggil fungsi fetchConfigs untuk mendapatkan data
     
+async function getProxyHost() {
+    const config = await getConfig();
+    
+    if (config) {
+        const proxyHost = `${encodeURIComponent(config.path)}`;
+        console.log(proxyHost);  // Menampilkan hasil
+    } else {
+        console.log("No config found");
+    }
+}
 
+getProxyHost(); 
 
 
    
