@@ -2966,7 +2966,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3283,7 +3283,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3651,7 +3651,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3989,7 +3989,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -4281,7 +4281,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -4611,7 +4611,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
 
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const countryCode = parts[2]; // Kode negara ISO
     const isp = parts[3]; // Informasi ISP
@@ -4682,7 +4682,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   let conf = '';
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = ${encodeURIComponent(config.path)}
+    const proxyHost = `${encodeURIComponent(config.path)}`;
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const UUIDS = generateUUIDv4();
