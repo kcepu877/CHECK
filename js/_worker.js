@@ -124,7 +124,7 @@ export default {
 
       if (upgradeHeader === "websocket") {
         // Match path dengan format /CC atau /CCangka
-        const pathMatch = url.pathname.match(/^\/FreeProxy\/([A-Z]{2})(\d+)?$/);
+        const pathMatch = url.pathname.match(/^\/FreeProxy\/([A-Z]{2})(\d+)?$/i);
 
         if (pathMatch) {
           const countryCode = pathMatch[1];
@@ -866,6 +866,8 @@ async function handleWebRequest(request) {
 
                 const path = `/FreeProxy/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
+		    console.log("Generated Path:", path);
+
 
                 // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
                 return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
