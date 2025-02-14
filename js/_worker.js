@@ -2966,7 +2966,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -2988,7 +2988,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${encodeURIComponent(path)}
+    path: ${proxyHost}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'trojan') {
@@ -3004,7 +3004,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${encodeURIComponent(path)}
+    path: ${proxyHost}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'ss') {
@@ -3023,7 +3023,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${encodeURIComponent(path)}
+    path: ${proxyHost}
     mux: false
     headers:
       custom: ${wildcrd}`;
@@ -3041,7 +3041,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${encodeURIComponent(path)}
+    path: ${proxyHost}
     headers:
       Host: ${wildcrd}
 - name: ${ispName} trojan
@@ -3054,7 +3054,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${encodeURIComponent(path)}
+    path: ${proxyHost}
     headers:
       Host: ${wildcrd}
 - name: ${ispName} ss
@@ -3070,7 +3070,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${encodeURIComponent(path)}
+    path: ${proxyHost}
     mux: false
     headers:
       custom: ${wildcrd}`;
@@ -3283,7 +3283,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3292,7 +3292,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     if (type === 'trojan') {
       bmkg+= `${ispName},`
       conf += `
-${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${encodeURIComponent(path)}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${proxyHost}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
   return `#### BY : FREE CF PROXY #### 
@@ -3651,7 +3651,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3680,7 +3680,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "vless",
@@ -3706,7 +3706,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "trojan"
@@ -3722,7 +3722,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${encodeURIComponent(path)};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=${proxyHost};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
@@ -3745,7 +3745,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "vless",
@@ -3768,7 +3768,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "trojan"
@@ -3781,7 +3781,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${encodeURIComponent(path)};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=${proxyHost};host=${wildcrd};tls=1"
     },`;
     }
   }
@@ -3989,7 +3989,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -4013,7 +4013,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       },
       "transport": {
         "type": "ws",
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4037,7 +4037,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       },
       "transport": {
         "type": "ws",
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4055,7 +4055,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${encodeURIComponent(path)};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=${proxyHost};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
@@ -4073,7 +4073,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       },
       "transport": {
         "type": "ws",
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4094,7 +4094,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       },
       "transport": {
         "type": "ws",
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4109,7 +4109,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${encodeURIComponent(path)};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=${proxyHost};host=${wildcrd};tls=1"
     },`;
     }
   }
@@ -4281,7 +4281,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -4310,7 +4310,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "vless",
@@ -4336,7 +4336,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "trojan"
@@ -4352,7 +4352,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${encodeURIComponent(path)};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=${proxyHost};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
@@ -4375,7 +4375,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "vless",
@@ -4398,7 +4398,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${encodeURIComponent(path)}",
+        "path": "${proxyHost}",
         "type": "ws"
       },
       "type": "trojan"
@@ -4411,7 +4411,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${encodeURIComponent(path)};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=${proxyHost};host=${wildcrd};tls=1"
     },`;
     }
   }
@@ -4611,7 +4611,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
 
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const countryCode = parts[2]; // Kode negara ISO
     const isp = parts[3]; // Informasi ISP
@@ -4623,31 +4623,31 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
 
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${ispInfo}\n`;
       } else {
-        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${ispInfo}\n`;
-        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     }
   }
@@ -4682,38 +4682,38 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   let conf = '';
   for (let line of ips) {
     const parts = line.split(',');
-    const proxyHost = parts[0];
+    const proxyHost = ${encodeURIComponent(config.path)};
     const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const UUIDS = generateUUIDv4();
     const information = encodeURIComponent(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]}`);
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${information}\n`;
       } else {
-        conf += `trojan://${UUIDS}@${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=none&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${information}\n`;
-        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}#${information}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${proxyHost}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `trojan://${UUIDS}@${bug}:80?path=${encodeURIComponent(path)}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${encodeURIComponent(path)}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=${proxyHost}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${proxyHost}&security=none&sni=${wildcrd}#${information}\n`;
       }
     }
   }
