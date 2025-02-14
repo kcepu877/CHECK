@@ -124,7 +124,7 @@ export default {
 
       if (upgradeHeader === "websocket") {
         // Match path dengan format /CC atau /CCangka
-        const pathMatch = url.pathname.match(/^\/([A-Z]{2})(\d+)?$/);
+        const pathMatch = url.pathname.match(/^\/Free-CF-Proxy-(([A-Z]{2}\d*)|([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)-(\d+))$/);
 
         if (pathMatch) {
           const countryCode = pathMatch[1];
