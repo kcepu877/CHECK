@@ -864,6 +864,11 @@ async function handleWebRequest(request) {
             const configs = text.trim().split('\n').map((line) => {
                 const [ip, port, countryCode, isp] = line.split(',');
 
+                // Pastikan ip dan port ada, jika tidak skip baris ini
+                if (!ip || !port) {
+                    return null;
+                }
+
                 if (!pathCounters[countryCode]) {
                     pathCounters[countryCode] = 1;
                 }
@@ -880,7 +885,7 @@ async function handleWebRequest(request) {
                     path,
                     ipPort: `${ip}:${port}`
                 };
-            });
+            }).filter(config => config !== null);  // Filter untuk menghilangkan data null
 
             return configs;
         } catch (error) {
@@ -894,6 +899,7 @@ async function handleWebRequest(request) {
     return new Response(JSON.stringify(proxies, null, 2), {
         headers: { 'Content-Type': 'application/json' }
     });
+
 
 
    
