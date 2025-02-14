@@ -124,7 +124,7 @@ export default {
 
       if (upgradeHeader === "websocket") {
         // Match path dengan format /CC atau /CCangka
-        const pathMatch = url.pathname.match(/^\/FreeCFproxy\/(([A-Z]{2}\d+)|([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)-(\d+))$/i);
+        const pathMatch = url.pathname.match(/^\/FreeProxy\/([A-Z]{2})(\d+)?$/);
 
         if (pathMatch) {
           const countryCode = pathMatch[1];
@@ -847,34 +847,36 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
-const fetchConfigs = async () => {
-    try {
-        const response = await fetch(apiUrl);
-        const text = await response.text();
-        
-        let pathCounters = {};  // Menyimpan jumlah path per countryCode
+async function handleWebRequest(request) {
+    const apiUrl = proxyListURL;
 
-        const configs = text.trim().split('\n').map((line) => {
-            const [ip, port, countryCode, isp] = line.split(',');
+    const fetchConfigs = async () => {
+        try {
+            const response = await fetch(apiUrl);
+            const text = await response.text();
+            
+            let pathCounters = {};
 
-            if (!pathCounters[countryCode]) {
-                pathCounters[countryCode] = 1;
-            }
+            const configs = text.trim().split('\n').map((line) => {
+                const [ip, port, countryCode, isp] = line.split(',');
 
-            // Membuat path dengan format /FreeCFproxy/{countryCode}{counter}
-            const path = `/FreeCFproxy/${countryCode}${pathCounters[countryCode]}`;
-            pathCounters[countryCode]++;
+                if (!pathCounters[countryCode]) {
+                    pathCounters[countryCode] = 1;
+                }
 
-            return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
-        });
+                const path = `/FreeProxy/${countryCode}${pathCounters[countryCode]}`;
+                pathCounters[countryCode]++;
 
-        return configs;
-    } catch (error) {
-        console.error('Error fetching configurations:', error);
-        return [];
-    }
-};
+                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
+                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+            });
 
+            return configs;
+        } catch (error) {
+            console.error('Error fetching configurations:', error);
+            return [];
+        }
+    };
 
    
 
