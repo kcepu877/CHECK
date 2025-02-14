@@ -123,22 +123,26 @@ export default {
       );
 
       if (upgradeHeader === "websocket") {
-        // Match path dengan format /CC atau /CCangka
-        const pathMatch = url.pathname.match(/^\/FreeProxy\/([A-Z]{2})(\d+)?$/i);
+    // Match path dengan format /Free/Bmkg/CC atau /Free/Bmkg/CCangka
+    const pathMatch = url.pathname.match(/^\/Free\/Bmkg\/([A-Z]{2})(\d+)?$/);
 
-        if (pathMatch) {
-          const countryCode = pathMatch[1];
-          const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
+    if (pathMatch) {
+        const countryCode = pathMatch[1];
+        const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
 
-          console.log(`Country Code: ${countryCode}, Index: ${index}`);
+        console.log(`Country Code: ${countryCode}, Index: ${index}`);
 
-          // Ambil proxy berdasarkan country code
-          const proxies = await getProxyList(env);
-          const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
+        // Ambil proxy berdasarkan country code
+        const proxies = await getProxyList(env);
+        const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
 
-          if (filteredProxies.length === 0) {
+        if (filteredProxies.length === 0) {
             return new Response(`No proxies available for country: ${countryCode}`, { status: 404 });
-          }
+        }
+
+        // Lanjutkan proses koneksi WebSocket
+
+
 
           let selectedProxy;
 
@@ -854,8 +858,8 @@ async function handleWebRequest(request) {
         try {
             const response = await fetch(apiUrl);
             const text = await response.text();
-            
-            let pathCounters = {};
+
+            let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
             const configs = text.trim().split('\n').map((line) => {
                 const [ip, port, countryCode, isp] = line.split(',');
@@ -864,28 +868,31 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
-                const path = `/FreeProxy/${countryCode}${pathCounters[countryCode]}`;
+                // Format path tanpa "/" sebelum angka
+                const path = `/Free/Bmkg/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
-		    console.log("Generated Path:", path); // Logging di sini
 
-		    
-		    
-
-                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
-                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+                return {
+                    ip,
+                    port,
+                    countryCode,
+                    isp,
+                    path,
+                    ipPort: `${ip}:${port}`
+                };
             });
 
-		console.log("Original Path:", url.pathname);
-                    console.log("Generated Paths:", configs.map(p => p.path));
-
-
-		
             return configs;
         } catch (error) {
             console.error('Error fetching configurations:', error);
             return [];
         }
     };
+
+    // Panggil fungsi fetchConfigs untuk mendapatkan data
+    
+
+
 
    
 
