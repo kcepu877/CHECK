@@ -122,27 +122,23 @@ export default {
         })()
       );
 
-      
-          if (upgradeHeader === "websocket") {
-    // Match path dengan format /Free/Bmkg/CC atau /Free/Bmkg/CCangka
-    const pathMatch = url.pathname.match(/^\/Free\/Bmkg\/([A-Z]{2})(\d+)?$/);
+      if (upgradeHeader === "websocket") {
+        // Match path dengan format /CC atau /CCangka
+        const pathMatch = url.pathname.match(/^\/([A-Z]{2})(\d+)?$/);
 
-    if (pathMatch) {
-        const countryCode = pathMatch[1];
-        const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
+        if (pathMatch) {
+          const countryCode = pathMatch[1];
+          const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
 
-        console.log(`Country Code: ${countryCode}, Index: ${index}`);
+          console.log(`Country Code: ${countryCode}, Index: ${index}`);
 
-        // Ambil proxy berdasarkan country code
-        const proxies = await getProxyList(env);
-        const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
+          // Ambil proxy berdasarkan country code
+          const proxies = await getProxyList(env);
+          const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
 
-        if (filteredProxies.length === 0) {
+          if (filteredProxies.length === 0) {
             return new Response(`No proxies available for country: ${countryCode}`, { status: 404 });
-        }
-    
-        // Lanjutkan proses koneksi WebSocket
-
+          }
 
           let selectedProxy;
 
@@ -868,7 +864,7 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
-                const path = `/Free/Bmkg/${countryCode}${pathCounters[countryCode]}`;
+                const path = `/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
                 // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
@@ -881,26 +877,6 @@ async function handleWebRequest(request) {
             return [];
         }
     };
-
-
-
-    // Panggil fungsi fetchConfigs untuk mendapatkan data
-    const proxies = await fetchConfigs();
-
-    // Kirim data JSON ke localStorage dan arahkan pengguna kembali ke halaman utama
-    const script = `
-        <script>
-            localStorage.setItem('proxiesData', '${JSON.stringify(proxies)}');
-            window.location.href = '/'; // Arahkan pengguna ke halaman utama
-        </script>
-    `;
-    
-    return new Response(script, {
-        headers: { 'Content-Type': 'text/html' }
-    });
-
-
-
 
    
 
