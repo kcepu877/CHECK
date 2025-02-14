@@ -864,7 +864,7 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
-                const path = /FREE-BMKG`/${countryCode}${pathCounters[countryCode]}`;
+                const path = `/Free/Bmkg/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
                 // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
