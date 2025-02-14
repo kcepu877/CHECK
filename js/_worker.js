@@ -854,8 +854,8 @@ async function handleWebRequest(request) {
         try {
             const response = await fetch(apiUrl);
             const text = await response.text();
-            
-            let pathCounters = {};
+
+            let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
             const configs = text.trim().split('\n').map((line) => {
                 const [ip, port, countryCode, isp] = line.split(',');
@@ -864,11 +864,18 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
+                // Format path tanpa "/" sebelum angka
                 const path = `/Free/Bmkg/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
-                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
-                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+                return {
+                    ip,
+                    port,
+                    countryCode,
+                    isp,
+                    path,
+                    ipPort: `${ip}:${port}`
+                };
             });
 
             return configs;
@@ -877,6 +884,14 @@ async function handleWebRequest(request) {
             return [];
         }
     };
+
+    // Panggil fungsi fetchConfigs untuk mendapatkan data
+    const proxies = await fetchConfigs();
+    return new Response(JSON.stringify(proxies, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+    });
+}
+
 
    
 
