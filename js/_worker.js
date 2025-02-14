@@ -123,8 +123,8 @@ export default {
       );
 
       if (upgradeHeader === "websocket") {
-    // Match path dengan format /Free/Bmkg/CC atau /Free/Bmkg/CCangka
-    const pathMatch = url.pathname.match(/^\/Free\/Bmkg\/([A-Z]{2})(\d+)?$/);
+    // Match path dengan format /FREE-PROXY/CC atau /FREE-PROXY/CCangka
+    const pathMatch = url.pathname.match(/^\/FREE-PROXY\/([A-Z]{2})(\d+)?$/);
 
     if (pathMatch) {
         const countryCode = pathMatch[1];
@@ -869,7 +869,7 @@ async function handleWebRequest(request) {
                 }
 
                 // Format path tanpa "/" sebelum angka
-                const path = `/Free/Bmkg/${countryCode}${pathCounters[countryCode]}`;
+                const path = `/FREE-PROXY/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
                 return {
