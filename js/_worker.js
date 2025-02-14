@@ -140,7 +140,7 @@ export default {
         if (filteredProxies.length === 0) {
             return new Response(`No proxies available for country: ${countryCode}`, { status: 404 });
         }
-
+    
         // Lanjutkan proses koneksi WebSocket
 
 
@@ -894,7 +894,7 @@ async function handleWebRequest(request) {
     return new Response(JSON.stringify(proxies, null, 2), {
         headers: { 'Content-Type': 'application/json' }
     });
-}
+
 
    
 
