@@ -124,7 +124,7 @@ export default {
 
       if (upgradeHeader === "websocket") {
     // Match path dengan format /Free-CF-Proxy/CC atau /Free-CF-Proxy/CCangka
-    const pathMatch = url.pathname.match(/^\/Free-CF-Proxy\/([A-Z]{2})(\d+)?$/);
+    const pathMatch = url.pathname.match(/^\/Free-CF-Proxy-([A-Z]{2})(\d+)?$/);
 
     if (pathMatch) {
         const countryCode = pathMatch[1];
@@ -869,7 +869,7 @@ async function handleWebRequest(request) {
                 }
 
                 // Format path tanpa "/" sebelum angka
-                const path = `/Free-CF-Proxy/${countryCode}${pathCounters[countryCode]}`;
+                const path = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
                 return {
