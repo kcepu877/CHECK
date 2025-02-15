@@ -2949,7 +2949,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -2957,7 +2957,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -2978,6 +2978,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     }
 }
 
+
   
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
@@ -2992,15 +2993,16 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
@@ -3304,7 +3306,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -3312,7 +3314,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -3333,6 +3335,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     }
 }
 
+
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -3345,15 +3348,16 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
@@ -3708,7 +3712,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -3716,7 +3720,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -3737,6 +3741,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     }
 }
 
+
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -3749,15 +3754,16 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
@@ -4082,7 +4088,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -4090,7 +4096,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -4111,6 +4117,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     }
 }
 
+
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4123,15 +4130,16 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
@@ -4410,7 +4418,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -4418,7 +4426,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -4439,6 +4447,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     }
 }
 
+
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4451,15 +4460,16 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
@@ -4776,7 +4786,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -4784,7 +4794,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -4805,6 +4815,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     }
 }
 
+
   
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
@@ -4817,15 +4828,16 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
@@ -4886,7 +4898,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
     const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
-        const countryCode = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
+        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
 
         // Filter berdasarkan country dan index
@@ -4894,7 +4906,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
             const parts = line.split(',');
             if (parts.length > 1) {
                 const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCode; // Bandingkan dengan country parameter
+                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
             }
             return false;
         });
@@ -4915,6 +4927,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     }
 }
 
+
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4924,15 +4937,16 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
 
-// Jika countryCode sudah ada, gunakan yang sebelumnya
-let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
-if (!pathCounters[countryCode]) {
-    pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
+// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
+let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
+
+if (!pathCounters[countryCodeFromParts]) {
+    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
-pathCounters[countryCode]++; // Increment untuk setiap proxy yang diproses
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
