@@ -833,7 +833,7 @@ async function handleSubRequest(hostnem) {
 
                     // Open link functionality
                     openLinkBtn.onclick = () => {
-                        window.open(generatedLink, '_blank');
+                        window.open(generatedLink, '_self');
                     };
 
                 } catch (error) {
