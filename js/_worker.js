@@ -2991,9 +2991,8 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
@@ -3345,9 +3344,8 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
@@ -3750,9 +3748,8 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
@@ -4125,9 +4122,8 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
@@ -4454,9 +4450,8 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
@@ -4821,9 +4816,8 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
@@ -4929,9 +4923,8 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
 const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-let pathCounters = {}; // Menyimpan jumlah path per countryCode
 
-// Format pathcfnegara dengan menambahkan '/Free-CF-Proxy-'
+// Jika countryCode sudah ada, gunakan yang sebelumnya
 let countryCode = parts[2]; // Mendapatkan kode negara dari proxy
 if (!pathCounters[countryCode]) {
     pathCounters[countryCode] = 1; // Inisialisasi path per kode negara
