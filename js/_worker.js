@@ -2941,8 +2941,10 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
@@ -3298,8 +3300,10 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
@@ -3704,8 +3708,10 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
@@ -4080,8 +4086,10 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
@@ -4410,8 +4418,10 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
@@ -4778,8 +4788,10 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     .split('\n')
     .filter(Boolean);
 
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
@@ -4890,8 +4902,10 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
+  let pathCounters = {}; 
+
   if (country && country.toLowerCase() === 'random') {
-    // Pilih data secara acak jika country = "random"
+ // Pilih data secara acak jika country = "random"
     const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
     ips = randomOrder;
 } else if (country) {
