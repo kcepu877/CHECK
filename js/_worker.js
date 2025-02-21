@@ -1,4 +1,4 @@
- import { connect } from "cloudflare:sockets";
+import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://cf.cepu.us.kg/update_proxyip.txt';
 const pagehost = '/'
@@ -123,26 +123,22 @@ export default {
       );
 
       if (upgradeHeader === "websocket") {
-    // Match path dengan format /Free-CF-Proxy/CC atau /Free-CF-Proxy/CCangka
-    const pathMatch = url.pathname.match(/^\/Free-CF-Proxy-([A-Z]{2})(\d+)?$/);
+        // Match path dengan format /CC atau /CCangka
+        const pathMatch = url.pathname.match(/^\/([A-Z]{2})(\d+)?$/);
 
-    if (pathMatch) {
-        const countryCode = pathMatch[1];
-        const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
+        if (pathMatch) {
+          const countryCode = pathMatch[1];
+          const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
 
-        console.log(`Country Code: ${countryCode}, Index: ${index}`);
+          console.log(`Country Code: ${countryCode}, Index: ${index}`);
 
-        // Ambil proxy berdasarkan country code
-        const proxies = await getProxyList(env);
-        const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
+          // Ambil proxy berdasarkan country code
+          const proxies = await getProxyList(env);
+          const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
 
-        if (filteredProxies.length === 0) {
+          if (filteredProxies.length === 0) {
             return new Response(`No proxies available for country: ${countryCode}`, { status: 404 });
-        }
-
-        // Lanjutkan proses koneksi WebSocket
-
-
+          }
 
           let selectedProxy;
 
@@ -164,7 +160,7 @@ export default {
         }
 
         // Match path dengan format ip:port atau ip=port
-        const ipPortMatch = url.pathname.match(/^\/Free-CF-Proxy-(.+[:=-]\d+)$/);
+        const ipPortMatch = url.pathname.match(/^\/(.+[:=-]\d+)$/);
 
         if (ipPortMatch) {
           proxyIP = ipPortMatch[1].replace(/[=:-]/, ":"); // Standarisasi menjadi ip:port
@@ -402,18 +398,9 @@ async function handleSubRequest(hostnem) {
     <div class="container">
         <div class="card">
             <h1 class="title">${namaWeb}</h1>
-<center><div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
-               <div style="display: flex; align-items: center; gap: 5px;">
-  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
-  </a>
-  <a href="${telegramku}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50">
-  </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a></div></center><br/><br/>             <form id="subLinkForm">
+<center><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <button style="background-color: #cde033; color: black; border: none; padding: 6px 12px; cursor: pointer; font-family: 'Rajdhani', sans-serif; border-radius: 5px;">Home Page</button></a></center>
+                       <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
                     <select id="app" class="form-control" required>
@@ -842,7 +829,7 @@ async function handleSubRequest(hostnem) {
 
                     // Open link functionality
                     openLinkBtn.onclick = () => {
-                        window.open(generatedLink, '_self');
+                        window.open(generatedLink, '_blank');
                     };
 
                 } catch (error) {
@@ -867,8 +854,8 @@ async function handleWebRequest(request) {
         try {
             const response = await fetch(apiUrl);
             const text = await response.text();
-
-            let pathCounters = {}; // Menyimpan jumlah path per countryCode
+            
+            let pathCounters = {};
 
             const configs = text.trim().split('\n').map((line) => {
                 const [ip, port, countryCode, isp] = line.split(',');
@@ -877,18 +864,11 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
-                // Format path tanpa "/" sebelum angka
-                const path = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
+                const path = `/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
-                return {
-                    ip,
-                    port,
-                    countryCode,
-                    isp,
-                    path,
-                    ipPort: `${ip}:${port}`
-                };
+                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
+                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
             });
 
             return configs;
@@ -897,11 +877,6 @@ async function handleWebRequest(request) {
             return [];
         }
     };
-
-    // Panggil fungsi fetchConfigs untuk mendapatkan data
-    
-
-
 
    
 
@@ -920,7 +895,7 @@ function buildCountryFlag() {
 
   let flagElement = "";
   for (const flag of uniqueFlags) {
-    if (flag && flag !== "Unknown" && typeof flag === 'string') {
+    if (flag && flag !== "Unknown") {
       try {
         flagElement += `<a href="/?page=${page}&search=${flag}" class="py-1">
       <span class="flag-circle flag-icon flag-icon-${flag.toLowerCase()}" 
@@ -1011,17 +986,17 @@ function buildCountryFlag() {
 
                     
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             VLESS
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=tls&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}&security=tls&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -1049,7 +1024,7 @@ function buildCountryFlag() {
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi dan tambahkan satuan kembali
+                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
                     console.log("Processed latency:", delay);  // Debugging log
                 } else {
                     delay = "N/A";
@@ -1106,17 +1081,17 @@ function buildCountryFlag() {
                     <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="warna-text">Loading...</div></td>
                     
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path.toUpperCase())}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             VLESS
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path.toUpperCase())}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=none&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}&security=none&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -1143,7 +1118,7 @@ function buildCountryFlag() {
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi dan tambahkan satuan kembali
+                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
                     console.log("Processed latency:", delay);  // Debugging log
                 } else {
                     delay = "N/A";
@@ -2208,27 +2183,20 @@ function buildCountryFlag() {
 <header><h1 class="quantum-title">${namaWeb}</h1></header>
     <div class="quantum-container">
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
-              <div style="display: flex; align-items: center; gap: 5px;">
-  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
-  </a>
-  <a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a>
-  <input type="text" 
-         id="search-bar" 
-         placeholder="Search by IP, CountryCode, or ISP"
-         value="${searchQuery}" 
-         style="flex: 1; margin-top: 5px; height: 45px;"/>
-  <button id="search-button">
-    <img src="https://kang.cepu.us.kg/img/search.png" alt="menu" width="40">
-  </button>
-</div>   ${searchQuery
-                ? `<button id="home-button" onclick="goToHomePage('${hostName}')">
-                  <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
+              <div style="display: flex; width: 90%;"><button class="button7"><a href="/api">SUB LINK</a></button>
+                <input type="text" 
+                  id="search-bar" 
+                  placeholder="Search by IP, CountryCode, or ISP"
+                  value="${searchQuery}" 
+                  style="flex: 1; margin-top: 5px; height: 45px;"/>
+                <button id="search-button" class="button7">Search</button>
+              </div>
+              ${searchQuery
+                ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostName}')">
+                  Home Page
                 </button>`
-                : ''}            </div>            
-            
+                : ''}
+            </div>            
             <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kere.us.kg/img/tele.png
 " alt="menu" width="50"></a>
   <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
@@ -2524,9 +2492,7 @@ async function protocolSniffer(buffer) {
     }
   }
 
-  
-
-const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
+  const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
   // Hanya mendukung UUID v4
   if (arrayBufferToHex(vlessDelimiter).match(/^\w{8}\w{4}4\w{3}[89ab]\w{3}\w{12}$/)) {
     return "VLESS";
@@ -2957,46 +2923,20 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
@@ -3008,22 +2948,8 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
@@ -3044,7 +2970,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'trojan') {
@@ -3060,7 +2986,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'ss') {
@@ -3079,7 +3005,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     mux: false
     headers:
       custom: ${wildcrd}`;
@@ -3097,7 +3023,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}
 - name: ${ispName} trojan
@@ -3110,7 +3036,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}
 - name: ${ispName} ss
@@ -3126,13 +3052,13 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     mux: false
     headers:
       custom: ${wildcrd}`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 port: 7890
 socks-port: 7891
@@ -3316,46 +3242,20 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -3365,22 +3265,8 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
@@ -3388,10 +3274,10 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     if (type === 'trojan') {
       bmkg+= `${ispName},`
       conf += `
-${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${proxyHost}:${proxyPort}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 [General]
 dns-server = system, 108.137.44.39, 108.137.44.9, puredns.org:853
@@ -3724,46 +3610,20 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -3773,22 +3633,8 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
@@ -3816,7 +3662,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
@@ -3842,7 +3688,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
@@ -3858,7 +3704,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
@@ -3881,7 +3727,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
@@ -3904,7 +3750,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
@@ -3917,11 +3763,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 {
   "dns": {
@@ -4102,46 +3948,20 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4151,22 +3971,8 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
@@ -4189,7 +3995,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4213,7 +4019,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4231,7 +4037,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
@@ -4249,7 +4055,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4270,7 +4076,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4285,11 +4091,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 {
   "log": {
@@ -4422,7 +4228,7 @@ ${conf}
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip",
       "external_ui_download_detour": "Internet",
-      "secret": "WONGKERE",
+      "secret": "bitzblack",
       "default_mode": "rule"
     }
   }
@@ -4434,46 +4240,20 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4483,22 +4263,8 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
@@ -4526,7 +4292,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
@@ -4552,7 +4318,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
@@ -4568,7 +4334,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
@@ -4591,7 +4357,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
@@ -4614,7 +4380,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
@@ -4627,11 +4393,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 {
   "dns": {
@@ -4804,46 +4570,20 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     .split('\n')
     .filter(Boolean);
 
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
@@ -4853,22 +4593,8 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
 
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const countryCode = parts[2]; // Kode negara ISO
     const isp = parts[3]; // Informasi ISP
 
@@ -4879,31 +4605,31 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
       } else {
-        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     }
   }
@@ -4918,98 +4644,58 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const UUIDS = generateUUIDv4();
     const information = encodeURIComponent(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]}`);
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
       } else {
-        conf += `trojan://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
-        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `trojan://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${information}\n`;
       }
     }
   }
