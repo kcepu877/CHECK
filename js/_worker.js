@@ -3811,7 +3811,7 @@ const snio = tls ? `"tls": {
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "",
+      "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -3876,7 +3876,7 @@ const snio = tls ? `"tls": {
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "",
+      "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName} vless",${snio}
@@ -4521,7 +4521,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "",
+      "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -4586,7 +4586,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "",
+      "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName} vless",${snio}
