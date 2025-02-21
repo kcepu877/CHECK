@@ -1,4 +1,4 @@
-import { connect } from "cloudflare:sockets";
+ import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://cf.cepu.us.kg/update_proxyip.txt';
 const pagehost = '/'
@@ -920,7 +920,7 @@ function buildCountryFlag() {
 
   let flagElement = "";
   for (const flag of uniqueFlags) {
-    if (flag && flag !== "Unknown") {
+    if (flag && flag !== "Unknown" && typeof flag === 'string') {
       try {
         flagElement += `<a href="/?page=${page}&search=${flag}" class="py-1">
       <span class="flag-circle flag-icon flag-icon-${flag.toLowerCase()}" 
