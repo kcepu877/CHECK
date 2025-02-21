@@ -248,16 +248,16 @@ async function handleSubRequest(hostnem) {
     <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
     <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
     <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://kere.us.kg/img/botvpn.jpg">
+    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
     <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
+    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -405,14 +405,14 @@ async function handleSubRequest(hostnem) {
 <center><div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
                <div style="display: flex; align-items: center; gap: 5px;">
   <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
   </a>
   <a href="${telegramku}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
+    <img src="https://bmkg.xyz/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
   </a><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50">
   </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
+    <img src="https://bmkg.xyz/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
   </a></div></center><br/><br/>             <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
@@ -1221,16 +1221,16 @@ function buildCountryFlag() {
     <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
     <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
     <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://kere.us.kg/img/botvpn.jpg">
+    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
     <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
+    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css">
       <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.1/css/all.css">
@@ -2210,10 +2210,10 @@ function buildCountryFlag() {
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
               <div style="display: flex; align-items: center; gap: 5px;">
   <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
   </a>
   <a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
   </a>
   <input type="text" 
          id="search-bar" 
@@ -2221,15 +2221,15 @@ function buildCountryFlag() {
          value="${searchQuery}" 
          style="flex: 1; margin-top: 5px; height: 45px;"/>
   <button id="search-button">
-    <img src="https://kang.cepu.us.kg/img/search.png" alt="menu" width="40">
+    <img src="https://bmkg.xyz/img/search.png" alt="menu" width="40">
   </button>
 </div>   ${searchQuery
                 ? `<button id="home-button" onclick="goToHomePage('${hostName}')">
-                  <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
+                  <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
                 </button>`
                 : ''}            </div>            
             
-            <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kere.us.kg/img/tele.png
+            <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
 " alt="menu" width="50"></a>
   <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
     <option value="" ${!selectedWildcard ? 'selected' : ''}>No Wildcard</option>
@@ -2237,7 +2237,7 @@ function buildCountryFlag() {
   </select>
   <select id="configType" name="configType" onchange="onConfigTypeChange(event)" style="width: 60px; height: 45px;">
     <option value="tls" ${selectedConfigType === 'tls' ? 'selected' : ''}>TLS</option>
-    <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kere.us.kg/img/bot.png
+    <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
 " alt="menu" width="50"></a>
 </div>
 <div 
