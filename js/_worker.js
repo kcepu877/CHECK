@@ -3794,8 +3794,13 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
-    const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
-    if (type === 'vless') {
+const snio = tls ? `"tls": {
+    "disable_sni": false,
+    "enabled": true,
+    "insecure": true,
+    "server_name": "${wildcrd}"
+  },` : '';
+ if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
       conf += `
     {
@@ -3806,7 +3811,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -3871,7 +3876,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName} vless",${snio}
@@ -4516,7 +4521,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -4581,7 +4586,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName} vless",${snio}
