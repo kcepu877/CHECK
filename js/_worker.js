@@ -2231,7 +2231,7 @@ function buildCountryFlag() {
             
             <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
 " alt="menu" width="50"></a>
-  <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
+  <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 60px; height: 45px;">
     <option value="" ${!selectedWildcard ? 'selected' : ''}>No Wildcard</option>
     ${wildcards.map(w => `<option value="${w}" ${selectedWildcard === w ? 'selected' : ''}>${w}</option>`).join('')}
   </select>
