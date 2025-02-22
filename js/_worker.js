@@ -532,7 +532,7 @@ async function handleSubRequest(hostnem) {
     <option value="CU">Cuba</option>
     <option value="CY">Cyprus</option>
     <option value="CZ">Czech Republic</option>
-    <option value="CI">Côte d'Ivoire</option>
+    <option value="CI">CÃ´te d'Ivoire</option>
     <option value="DK">Denmark</option>
     <option value="DJ">Djibouti</option>
     <option value="DM">Dominica</option>
@@ -647,11 +647,11 @@ async function handleSubRequest(hostnem) {
     <option value="PT">Portugal</option>
     <option value="PR">Puerto Rico</option>
     <option value="QA">Qatar</option>
-    <option value="RE">Réunion</option>
+    <option value="RE">RÃ©union</option>
     <option value="RO">Romania</option>
     <option value="RU">Russia</option>
     <option value="RW">Rwanda</option>
-    <option value="BL">Saint Barthélemy</option>
+    <option value="BL">Saint BarthÃ©lemy</option>
     <option value="SH">Saint Helena</option>
     <option value="KN">Saint Kitts and Nevis</option>
     <option value="LC">Saint Lucia</option>
@@ -937,7 +937,7 @@ function buildCountryFlag() {
 }
 
     const getFlagEmoji = (countryCode) => {
-      if (!countryCode) return '🏳️';
+      if (!countryCode) return 'ðŸ³ï¸';
       return countryCode
         .toUpperCase()
         .split('')
@@ -1057,12 +1057,12 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
+            if (status === 'ACTIVE âœ…') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD ❌') {
+            } else if (status === 'DEAD âŒ') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
@@ -1151,12 +1151,12 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
+            if (status === 'ACTIVE âœ…') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD ❌') {
+            } else if (status === 'DEAD âŒ') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
@@ -1199,11 +1199,11 @@ function buildCountryFlag() {
     }
 
     const prevPage = page > 1
-      ? `<a href="?page=${page - 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">◁</a>`
+      ? `<a href="?page=${page - 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">â—</a>`
       : '';
 
     const nextPage = page < totalPages
-      ? `<a href="?page=${page + 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">▷</a>`
+      ? `<a href="?page=${page + 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">â–·</a>`
       : '';
 
   return new Response(`
@@ -2203,150 +2203,8 @@ function buildCountryFlag() {
 
 
     </style>
-    <style>
-      .btn-body {
-        margin: 15px 0;
-        position: relative;
-        display: flex;
-      }
-
-      .btn-body .btn-items {
-        margin: 20px 5;
-       
-        width: 100%;
-      }
-
-      .btn-body .btn-items a {
-        text-decoration: none;
-        width: 100%;
-        padding: 25px 0;
-        
-        color: #fff;
-        background: -webkit-linear-gradient(top, hsl(0, 0%, 33%) 0%, #1a1a1a 100%);
-        border-radius: 15px;
-        display: inline-block;
-        text-align: center;overflow: hidden;position: relative;
-      }.btn-body .btn-items a::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: width: 100%;
-        height: 100%;
-        background-color: #ad8585;
-        opacity: 0;
-        -webkit-transition: 0.2s opacity ease-in-out;
-        transition: 0.2s opacity ease-in-out;
-      }
-
-      .btn-items a span {
-        position: absolute;
-      }
-
-      .btn-items a span:nth-child(1) {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: -webkit-gradient(linear, left bottom, left top, from(rgba(43, 8, 8, 0)), to(#0f0));
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-        -webkit-animation: 2s animateTop linear -1s infinite;
-        animation: 2s animateTop linear -1s infinite;
-      }
-
-      .btn-items a span:nth-child(2) {
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 2px;
-        background: -webkit-gradient(linear, left bottom, left top, from(rgba(43, 8, 8, 0)), to(#0f0));
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-        -webkit-animation: 2s animateRight linear -1s infinite;
-        animation: 2s animateRight linear -1s infinite;
-      }
-
-      .btn-items a span:nth-child(3) {
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: -webkit-gradient(linear, left top, right top, from(rgba(43, 8, 8, 0)), to(#0f0));
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-        -webkit-animation: 2s animateBottom linear infinite;
-        animation: 2s animateBottom linear infinite;
-      }
-
-      .btn-items a span:nth-child(4) {
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 2px;
-        background: -webkit-gradient(linear, left top, left bottom, from(rgba(43, 8, 8, 0)), to(#0f0));
-        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-        -webkit-animation: 2s animateLeft linear -1s infinite;
-        animation: 2s animateLeft linear -1 infinite;
-      }
-
-
-      @keyframes animateTop {
-        0% {
-          -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-        }
-
-        100% {
-          -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
-        }
-      }
-
-      @keyframes animateRight {
-        0% {
-          -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-        }
-
-        100% {
-          -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-        }
-      }
-
-      @keyframes animateLeft {
-        0% {
-          -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-        }
-
-        100% {
-          -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-        }
-      }
-
-      @keyframes animateBottom {
-        0% {
-          -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
-        }
-
-        100% {
-          -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-        }
-      }
-
-      
-      
-    </style>
-    
-  </head>
-    <body>
-   
-      
-    
-    
-       
-  
+</head>
+<body>
 <header><h1 class="quantum-title">${namaWeb}</h1></header>
     <div class="quantum-container">
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
@@ -2382,17 +2240,12 @@ function buildCountryFlag() {
     <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
 " alt="menu" width="50"></a>
 </div>
- <center>            
-<div class="btn-body">
-                       <div class="btn-items">                       
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-                      
+<div 
+    class="w-full h-12 overflow-x-auto px-2 py-1 flex items-center space-x-2 shadow-lg bg-transparent border"
+    style="border-width: 2px; border-style: solid; border-color: #008080; height: 70px; border-radius: 16px;">
+    
     ${buildCountryFlag()}
-</div></div> </center>
-
+</div>
 <br>
 	  <div class="table-wrapper">
               <table class="quantum-table">
