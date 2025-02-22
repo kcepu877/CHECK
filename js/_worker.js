@@ -1057,12 +1057,12 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE âœ…') {
+            if (status === 'ACTIVE ✅') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD âŒ') {
+            } else if (status === 'DEAD ❌') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
@@ -1151,12 +1151,12 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE âœ…') {
+            if (status === 'ACTIVE ✅') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD âŒ') {
+            } else if (status === 'DEAD ❌') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
