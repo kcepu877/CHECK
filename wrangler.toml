@@ -13,7 +13,12 @@ enabled = true
 binding = "UUID_STORAGE"
 id = "4d2115c565d6402d891344b8e7e1c119"
 
-
+[[routes]]
+pattern = "bugwildcard.bmkg.xyz.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "bugwildcard.bmkg.xyz"
+custom_domain = true
 [[routes]]
 pattern = "web.bmkg.xyz"
 custom_domain = true
