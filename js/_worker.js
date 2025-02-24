@@ -450,6 +450,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="configType">Tipe Config</label>
                     <select id="configType" class="form-control" required>
+                        <option value="mix">MIX</option>                
                         <option value="vless">VLESS</option>
                         <option value="trojan">TROJAN</option>
                         <option value="ss">SHADOWSOCKS</option>
@@ -3271,24 +3272,24 @@ proxy-groups:
   proxies:
   - BEST-PING
   - LOAD-BALANCE
-  - ADS
 ${bmkg}- name: ADS
   type: select
   disable-udp: false
   proxies:
   - REJECT
   - INTERNET
+- name: LOAD-BALANCE
+  type: load-balance
+  url: https://detectportal.firefox.com/success.txt
+  interval: 60
+  proxies:
+${bmkg}
 - name: BEST-PING
   type: url-test
   url: https://detectportal.firefox.com/success.txt
   interval: 60
   proxies:
-${bmkg}- name: LOAD-BALANCE
-  type: load-balance
-  url: https://detectportal.firefox.com/success.txt
-  interval: 60
-  proxies:
-${bmkg} rule-providers:
+${bmkg}rule-providers:
   rule_hijacking:
     type: file
     behavior: classical
