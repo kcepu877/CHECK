@@ -3802,20 +3802,15 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
-    // Mendefinisikan snio hanya jika tls true
-  const snio = tls ? `"tls": {
-  "disable_sni": false,
-  "enabled": true,
-  "insecure": true,
-  "server_name": "${wildcrd}"
-}` : ''; // Pastikan snio hanya ada jika TLS aktif
-
-let ispTag = `${ispName}🔐`; // Tag dengan emoji
-let snioString = snio ? `,${snio}` : ''; // Menambahkan koma jika snio ada
-
-if (type === 'vless') {
-  bmkg += `        "${ispTag}",\n`;
-  conf += `
+    const snio = tls ? `"tls": {
+    "disable_sni": false,
+    "enabled": true,
+    "insecure": true,
+    "server_name": "${wildcrd}"
+  },` : '';
+ if (type === 'vless') {
+      bmkg+= `        "${ispName}",\n`
+      conf += `
     {
       "domain_strategy": "ipv4_only",
       "flow": "",
@@ -3827,7 +3822,7 @@ if (type === 'vless') {
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispTag}",${snioString}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3839,10 +3834,10 @@ if (type === 'vless') {
       },
       "type": "vless",
       "uuid": "${UUIDS}"
-    },`;  // Pastikan ada koma setelah objek ini
-} else if (type === 'trojan') {
-  bmkg += `        "${ispTag}",\n`;
-  conf += `
+    },`;
+    } else if (type === 'trojan') {
+      bmkg+= `        "${ispName}",\n`
+      conf += `
     {
       "domain_strategy": "ipv4_only",
       "multiplex": {
@@ -3853,7 +3848,7 @@ if (type === 'vless') {
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispTag}",${snioString}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3864,23 +3859,23 @@ if (type === 'vless') {
         "type": "ws"
       },
       "type": "trojan"
-    },`;  // Pastikan ada koma setelah objek ini
-} else if (type === 'ss') {
-  bmkg += `        "${ispTag}",\n`;
-  conf += `
+    },`;
+    } else if (type === 'ss') {
+      bmkg+= `        "${ispName}",\n`
+      conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispTag}🛡️",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
-    },`;  // Pastikan ada koma setelah objek ini
-} else if (type === 'mix') {
-  bmkg += `        "${ispTag}🦊",\n        "${ispTag}🔐",\n        "${ispTag}🛡️",\n`;
-  conf += `
+    },`;
+    } else if (type === 'mix') {
+      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName}🛡️",\n`
+      conf += `
     {
       "domain_strategy": "ipv4_only",
       "flow": "",
@@ -3892,7 +3887,7 @@ if (type === 'vless') {
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispTag}🦊",${snioString}
+      "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3915,7 +3910,7 @@ if (type === 'vless') {
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispTag}🔐",${snioString}
+      "tag": "${ispName}🔐",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3929,17 +3924,15 @@ if (type === 'vless') {
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispTag}🛡️",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
-    },`;  // Pastikan ada koma setelah objek ini
-}
-
-
+    },`;
+    }
   }
   return `#### BY : FREE CF PROXY #### 
 
