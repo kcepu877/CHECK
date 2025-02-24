@@ -1017,12 +1017,12 @@ function buildCountryFlag() {
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${encodeURIComponent(config.path)}`@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${config.path}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${encodeURIComponent(config.path)}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=tls&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${config.path}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=tls&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -1112,12 +1112,12 @@ function buildCountryFlag() {
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${encodeURIComponent(config.path)}`@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${config.path}@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${encodeURIComponent(config.path)}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=none&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${config.path}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=none&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
