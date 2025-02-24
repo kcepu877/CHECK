@@ -3806,7 +3806,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     "disable_sni": false,
     "enabled": true,
     "insecure": true,
-    "server_name": "${wildcrd}",` ;
+    "server_name": "${wildcrd}",` : '';
  if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
       conf += `
