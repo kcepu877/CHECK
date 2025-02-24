@@ -3802,12 +3802,11 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
-   const snio = tls ? `"tls": {
+   const snio = tls ? `"tls": 
     "disable_sni": false,
     "enabled": true,
     "insecure": true,
-    "server_name": "${wildcrd}",
-  }`  :'';
+    "server_name": "${wildcrd}",` ;
  if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
       conf += `
