@@ -3027,7 +3027,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})  ${count ++}`);
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
@@ -3085,9 +3085,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     headers:
       custom: ${wildcrd}`;
     } else if (type === 'mix') {
-      bmkg+= `  - ${ispName}\n  - ${ispName}\n  - ${ispName}\n`;
+      bmkg+= `  - ${ispName}VL\n  - ${ispName}TR\n  - ${ispName}SS\n`;
       conf += `
-- name: ${ispName}
+- name: ${ispName}VL
   server: ${bug}
   port: ${ports}
   type: vless
@@ -3101,7 +3101,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     path: ${pathcfnegara}
     headers:
       Host: ${wildcrd}
-- name: ${ispName}
+- name: ${ispName}TR
   server: ${bug}
   port: 443
   type: trojan
@@ -3114,7 +3114,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     path: ${pathcfnegara}
     headers:
       Host: ${wildcrd}
-- name: ${ispName}
+- name: ${ispName}SS
   type: ss
   server: ${bug}
   port: ${ports}
@@ -3391,7 +3391,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})  ${count ++}`);
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     if (type === 'trojan') {
       bmkg+= `${ispName},`
@@ -3799,7 +3799,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})  ${count ++}`);
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
 const snio = tls ? `"tls": {
@@ -3874,7 +3874,7 @@ const snio = tls ? `"tls": {
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName}",\n        "${ispName}",\n        "${ispName}",\n`
+      bmkg+= `        "${ispName}VL",\n        "${ispName}TR",\n        "${ispName}SS",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3887,7 +3887,7 @@ const snio = tls ? `"tls": {
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}VL",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3910,7 +3910,7 @@ const snio = tls ? `"tls": {
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}TR",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3924,7 +3924,7 @@ const snio = tls ? `"tls": {
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}SS",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4182,7 +4182,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})  ${count ++}`);
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "enabled": true,\n        "server_name": "${wildcrd}",\n        "insecure": true\n      },` : '';
@@ -4247,11 +4247,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName}",\n        "${ispName}",\n        "${ispName}",\n`
+      bmkg+= `        "${ispName}VL",\n        "${ispName}TR",\n        "${ispName}SS",\n`
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName}",
+      "tag": "${ispName}VL",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -4272,7 +4272,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "trojan",
-      "tag": "${ispName}",
+      "tag": "${ispName}TR",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -4292,7 +4292,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}SS",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4514,7 +4514,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})  ${count ++}`);
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]})${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
@@ -4584,7 +4584,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName}",\n        "${ispName}",\n        "${ispName}",\n`
+      bmkg+= `        "${ispName}VL",\n        "${ispName}TR",\n        "${ispName}SS",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4597,7 +4597,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}VL",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4620,7 +4620,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}TR",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4634,7 +4634,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}SS",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4995,7 +4995,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const UUIDS = generateUUIDv4();
-    const information = encodeURIComponent(`${emojiFlag} (${line.split(',')[2]}) `);
+    const information = encodeURIComponent(`${emojiFlag}(${line.split(',')[2]})`);
     if (type === 'vless') {
       if (tls) {
         conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
