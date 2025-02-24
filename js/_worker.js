@@ -4863,6 +4863,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
   }
 
   let conf = '';
+  let count = 1;
 
   for (let line of ips) {
     const parts = line.split(',');
@@ -4886,8 +4887,10 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     const isp = parts[3]; // Informasi ISP
 
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
+    const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
+    const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra  
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
-    const ispInfo = `${countryText} ${isp}`;
+    const ispInfo = `sanitize(`${emojiFlag}-[${countryText}] ${count ++}`;
     const UUIDS = `${generateUUIDv4()}`;
 
     if (type === 'vless') {
@@ -4975,6 +4978,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
+  let count = 1;
   for (let line of ips) {
     const parts = line.split(',');
 const proxyHost = parts[0]; // IP
@@ -4996,7 +5000,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra  
     const UUIDS = generateUUIDv4();
-    const information = sanitize(`${emojiFlag}-[${line.split(',')[2]}]`);
+    const information = sanitize(`${emojiFlag}-[${line.split(',')[2]}]${count ++}`);
     if (type === 'vless') {
       if (tls) {
         conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
