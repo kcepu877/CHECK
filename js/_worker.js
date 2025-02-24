@@ -4887,10 +4887,8 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     const isp = parts[3]; // Informasi ISP
 
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
-    const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
-    const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra  
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
-    const ispInfo = `sanitize(${emojiFlag}-[${countryText}] ${count ++}`;
+    const ispInfo = `[${countryText}] ${isp}`;
     const UUIDS = `${generateUUIDv4()}`;
 
     if (type === 'vless') {
