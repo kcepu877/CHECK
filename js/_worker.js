@@ -3802,15 +3802,20 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
+    // Mendefinisikan snio hanya jika tls true
 const snio = tls ? `"tls": {
-    "disable_sni": false,
-    "enabled": true,
-    "insecure": true,
-    "server_name": "${wildcrd}"
-  },` : '';
- if (type === 'vless') {
-      bmkg+= `        "${ispName}",\n`
-      conf += `
+  "disable_sni": false,
+  "enabled": true,
+  "insecure": true,
+  "server_name": "${wildcrd}"
+}` : ''; // Pastikan snio hanya ada jika TLS aktif
+
+let ispTag = `${ispName}🔐`; // Tag dengan emoji
+let snioString = snio ? `,${snio}` : ''; // Menambahkan koma jika snio ada
+
+if (type === 'vless') {
+  bmkg += `        "${ispTag}",\n`;
+  conf += `
     {
       "domain_strategy": "ipv4_only",
       "flow": "",
@@ -3822,7 +3827,7 @@ const snio = tls ? `"tls": {
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispTag}",${snioString}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3835,9 +3840,9 @@ const snio = tls ? `"tls": {
       "type": "vless",
       "uuid": "${UUIDS}"
     },`;
-    } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}",\n`
-      conf += `
+} else if (type === 'trojan') {
+  bmkg += `        "${ispTag}",\n`;
+  conf += `
     {
       "domain_strategy": "ipv4_only",
       "multiplex": {
@@ -3848,7 +3853,7 @@ const snio = tls ? `"tls": {
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispTag}",${snioString}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3860,12 +3865,12 @@ const snio = tls ? `"tls": {
       },
       "type": "trojan"
     },`;
-    } else if (type === 'ss') {
-      bmkg+= `        "${ispName}",\n`
-      conf += `
+} else if (type === 'ss') {
+  bmkg += `        "${ispTag}",\n`;
+  conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispTag}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -3873,9 +3878,9 @@ const snio = tls ? `"tls": {
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
-    } else if (type === 'mix') {
-      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName}🛡️",\n`
-      conf += `
+} else if (type === 'mix') {
+  bmkg += `        "${ispTag}🦊",\n        "${ispTag}🔐",\n        "${ispTag}🛡️",\n`;
+  conf += `
     {
       "domain_strategy": "ipv4_only",
       "flow": "",
@@ -3887,7 +3892,7 @@ const snio = tls ? `"tls": {
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊",${snio}
+      "tag": "${ispTag}🦊",${snioString}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3910,7 +3915,7 @@ const snio = tls ? `"tls": {
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐",${snio}
+      "tag": "${ispTag}🔐",${snioString}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3924,7 +3929,7 @@ const snio = tls ? `"tls": {
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispTag}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -3932,7 +3937,8 @@ const snio = tls ? `"tls": {
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
-    }
+}
+
   }
   return `#### BY : FREE CF PROXY #### 
 
