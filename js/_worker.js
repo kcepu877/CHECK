@@ -75,8 +75,8 @@ export default {
     try {
       const url = new URL(request.url);
       const upgradeHeader = request.headers.get("Upgrade");
-      const CHECK_API_BASE = "https://xxx.xhamster.biz.id"; // Get base URL from secrets
-      const CHECK_API = `${CHECK_API_BASE}/proxy/check?ip=`;
+      const CHECK_API_BASE = "https://api.bmkg.xyz"; // Get base URL from secrets
+      const CHECK_API = `${CHECK_API_BASE}/check?ip=`;
       
       // Handle IP check
       if (url.pathname === "/check") {
