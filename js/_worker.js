@@ -3806,8 +3806,8 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     "disable_sni": false,
     "enabled": true,
     "insecure": true,
-    "server_name": "${wildcrd}"
-  },` : '';
+    "server_name": "${wildcrd}",
+  }`  '';
  if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
       conf += `
@@ -3819,7 +3819,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -3884,7 +3884,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🦊",${snio}
@@ -4208,7 +4208,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         },
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
-      "packet_encoding": "xudp"
+      "packet_encoding": ""
     },`;
     } else if (type === 'trojan') {
       bmkg+= `        "${ispName}",\n`
@@ -4268,7 +4268,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         },
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
-      "packet_encoding": "xudp"
+      "packet_encoding": ""
     },
     {
       "type": "trojan",
@@ -4529,7 +4529,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -4594,7 +4594,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🦊",${snio}
