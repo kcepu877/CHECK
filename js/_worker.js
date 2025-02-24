@@ -3805,8 +3805,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     const snio = tls ? `"tls": {
     "disable_sni": false,
     "enabled": true,
-    "insecure": true,
-    "server_name": "${wildcrd}"
+    "insecure": true,   
   },` : '';
  if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
@@ -3823,6 +3822,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
+      "server_name": "${wildcrd}"
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3849,6 +3849,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
+      "server_name": "${wildcrd}"
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
