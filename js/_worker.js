@@ -3085,9 +3085,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     headers:
       custom: ${wildcrd}`;
     } else if (type === 'mix') {
-      bmkg+= `  - ${ispName} vless\n  - ${ispName} trojan\n  - ${ispName} ss\n`;
+      bmkg+= `  - ${ispName}\n  - ${ispName}\n  - ${ispName}\n`;
       conf += `
-- name: ${ispName} vless
+- name: ${ispName}
   server: ${bug}
   port: ${ports}
   type: vless
@@ -3101,7 +3101,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     path: ${pathcfnegara}
     headers:
       Host: ${wildcrd}
-- name: ${ispName} trojan
+- name: ${ispName}
   server: ${bug}
   port: 443
   type: trojan
@@ -3114,7 +3114,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     path: ${pathcfnegara}
     headers:
       Host: ${wildcrd}
-- name: ${ispName} ss
+- name: ${ispName}
   type: ss
   server: ${bug}
   port: ${ports}
@@ -3874,7 +3874,7 @@ const snio = tls ? `"tls": {
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName}",\n        "${ispName}",\n        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3887,7 +3887,7 @@ const snio = tls ? `"tls": {
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} vless",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3910,7 +3910,7 @@ const snio = tls ? `"tls": {
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} trojan",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3924,7 +3924,7 @@ const snio = tls ? `"tls": {
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName} ss",
+      "tag": "${ispName}",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4247,11 +4247,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName}",\n        "${ispName}",\n        "${ispName}",\n`
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName} vless",
+      "tag": "${ispName}",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -4272,7 +4272,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "trojan",
-      "tag": "${ispName} trojan",
+      "tag": "${ispName}",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -4292,7 +4292,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName} ss",
+      "tag": "${ispName}",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4584,7 +4584,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName}",\n        "${ispName}",\n        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4597,7 +4597,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} vless",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4620,7 +4620,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} trojan",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4634,7 +4634,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName} ss",
+      "tag": "${ispName}",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
