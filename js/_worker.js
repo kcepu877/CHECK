@@ -3803,7 +3803,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     // Mendefinisikan snio hanya jika tls true
-const snio = tls ? `"tls": {
+  const snio = tls ? `"tls": {
   "disable_sni": false,
   "enabled": true,
   "insecure": true,
@@ -3839,7 +3839,7 @@ if (type === 'vless') {
       },
       "type": "vless",
       "uuid": "${UUIDS}"
-    },`;
+    },`;  // Pastikan ada koma setelah objek ini
 } else if (type === 'trojan') {
   bmkg += `        "${ispTag}",\n`;
   conf += `
@@ -3864,7 +3864,7 @@ if (type === 'vless') {
         "type": "ws"
       },
       "type": "trojan"
-    },`;
+    },`;  // Pastikan ada koma setelah objek ini
 } else if (type === 'ss') {
   bmkg += `        "${ispTag}",\n`;
   conf += `
@@ -3877,7 +3877,7 @@ if (type === 'vless') {
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
-    },`;
+    },`;  // Pastikan ada koma setelah objek ini
 } else if (type === 'mix') {
   bmkg += `        "${ispTag}🦊",\n        "${ispTag}🔐",\n        "${ispTag}🛡️",\n`;
   conf += `
@@ -3936,8 +3936,9 @@ if (type === 'vless') {
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
-    },`;
+    },`;  // Pastikan ada koma setelah objek ini
 }
+
 
   }
   return `#### BY : FREE CF PROXY #### 
