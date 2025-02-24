@@ -3035,7 +3035,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     if (type === 'vless') {
       bmkg+= `  - ${ispName}\n`
       conf += `
-- name: ${ispName}
+- name: ${ispName}🦊
   server: ${bug}
   port: ${ports}
   type: vless
@@ -3051,7 +3051,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     } else if (type === 'trojan') {
       bmkg+= `  - ${ispName}\n`
       conf += `
-- name: ${ispName}
+- name: ${ispName}🔐
   server: ${bug}
   port: 443
   type: trojan
@@ -3067,7 +3067,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     } else if (type === 'ss') {
       bmkg+= `  - ${ispName}\n`
       conf += `
-- name: ${ispName}
+- name: ${ispName}🛡️
   type: ss
   server: ${bug}
   port: ${ports}
@@ -3865,7 +3865,7 @@ const snio = tls ? `"tls": {
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4191,7 +4191,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName}",
+      "tag": "${ispName}🦊",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -4215,7 +4215,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       conf += `
     {
       "type": "trojan",
-      "tag": "${ispName}",
+      "tag": "${ispName}🔐",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -4238,7 +4238,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4575,7 +4575,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
