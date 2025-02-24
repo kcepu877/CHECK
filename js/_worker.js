@@ -3263,14 +3263,18 @@ dns:
     - "*.ffxiv.com"
     - "*.mcdn.bilivideo.cn"
     - +.media.dssott.com
-proxies:${conf}
+proxies:
+${conf}
 proxy-groups:
 - name: INTERNET
   type: select
   disable-udp: true
   proxies:
   - BEST-PING
-${bmkg}- name: ADS
+  - LOAD-BALANCE
+  - ADS
+${bmkg}
+- name: ADS
   type: select
   disable-udp: false
   proxies:
@@ -3281,7 +3285,14 @@ ${bmkg}- name: ADS
   url: https://detectportal.firefox.com/success.txt
   interval: 60
   proxies:
-${bmkg}rule-providers:
+${bmkg}
+- name: LOAD-BALANCE
+  type: load-balance
+  url: https://detectportal.firefox.com/success.txt
+  interval: 60
+  proxies:
+${bmkg}
+- rule-providers:
   rule_hijacking:
     type: file
     behavior: classical
