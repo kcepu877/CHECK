@@ -4893,31 +4893,31 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
 
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}🦊\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}🦊\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}🔐\n`;
       } else {
-        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}🔐\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}🛡️\n`;
       } else {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}🛡️\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
-        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}🦊\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}🔐\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}🛡️\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}🦊\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}🔐\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}🛡️\n`;
       }
     }
   }
@@ -5001,31 +5001,31 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     const information = sanitize(`${emojiFlag}-[${line.split(',')[2]}]${count ++}`);
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}🦊\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}🔐\n`;
       } else {
-        conf += `trojan://${pathcfnegara}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
       } else {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
-        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}🦊\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}🔐\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `trojan://${pathcfnegara}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
       }
     }
   }
