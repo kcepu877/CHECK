@@ -3020,10 +3020,10 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3045,7 +3045,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${pathcfnegara}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'trojan') {
@@ -3061,7 +3061,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${pathcfnegara}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'ss') {
@@ -3080,7 +3080,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${pathcfnegara}
+    path: /${pathcfnegara}
     mux: false
     headers:
       custom: ${wildcrd}`;
@@ -3098,7 +3098,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${pathcfnegara}
     headers:
       Host: ${wildcrd}
 - name: ${ispName}TR
@@ -3111,7 +3111,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${pathcfnegara}
     headers:
       Host: ${wildcrd}
 - name: ${ispName}SS
@@ -3127,7 +3127,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${pathcfnegara}
+    path: /${pathcfnegara}
     mux: false
     headers:
       custom: ${wildcrd}`;
@@ -3384,10 +3384,10 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3396,7 +3396,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     if (type === 'trojan') {
       bmkg+= `${ispName},`
       conf += `
-${ispName} = trojan, ${bug}, 443, password = ${pathcfnegara} udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName} = trojan, ${bug}, 443, password = ${pathcfnegara} udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
   return `#### BY : FREE CF PROXY #### 
@@ -3792,10 +3792,10 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -3829,7 +3829,7 @@ const snio = tls ? `"tls": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "vless",
@@ -3855,7 +3855,7 @@ const snio = tls ? `"tls": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "trojan"
@@ -3871,7 +3871,7 @@ const snio = tls ? `"tls": {
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName}VL",\n        "${ispName}TR",\n        "${ispName}SS",\n`
@@ -3894,7 +3894,7 @@ const snio = tls ? `"tls": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "vless",
@@ -3917,7 +3917,7 @@ const snio = tls ? `"tls": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "trojan"
@@ -3930,7 +3930,7 @@ const snio = tls ? `"tls": {
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     }
   }
@@ -4175,10 +4175,10 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -4202,7 +4202,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4226,7 +4226,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4244,7 +4244,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName}VL",\n        "${ispName}TR",\n        "${ispName}SS",\n`
@@ -4262,7 +4262,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4283,7 +4283,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -4298,7 +4298,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     }
   }
@@ -4507,10 +4507,10 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
@@ -4539,7 +4539,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "vless",
@@ -4565,7 +4565,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "trojan"
@@ -4581,7 +4581,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
       bmkg+= `        "${ispName}VL",\n        "${ispName}TR",\n        "${ispName}SS",\n`
@@ -4604,7 +4604,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "vless",
@@ -4627,7 +4627,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${pathcfnegara}",
         "type": "ws"
       },
       "type": "trojan"
@@ -4640,7 +4640,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "method": "none",
       "password": "${pathcfnegara}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     }
   }
@@ -4877,10 +4877,10 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const countryCode = parts[2]; // Kode negara ISO
     const isp = parts[3]; // Informasi ISP
@@ -4892,31 +4892,31 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
       } else {
-        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${pathcfnegara}\u0040${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     }
   }
@@ -4988,41 +4988,41 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
+const pathcfnegara = `Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
+console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const UUIDS = generateUUIDv4();
     const information = encodeURIComponent(`${emojiFlag}(${line.split(',')[2]})`);
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
       } else {
-        conf += `trojan://${pathcfnegara}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
-        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=/${pathcfnegara}#${information}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `trojan://${pathcfnegara}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${pathcfnegara}@${bug}:80?path=/${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${pathcfnegara}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=/${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
       }
     }
   }
