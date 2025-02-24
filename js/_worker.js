@@ -3802,11 +3802,11 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
-    const snio = tls ? `"tls": {
+   const snio = tls ? `"tls": {
     "disable_sni": false,
     "enabled": true,
     "insecure": true,
-    "server_name": "${wildcrd}"
+    "server_name": "${wildcrd}",
   },` : '';
  if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
@@ -3822,7 +3822,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}","${snio}"
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3848,7 +3848,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}","${snio}"
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3887,7 +3887,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊","${snio}"
+      "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -3910,7 +3910,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐","${snio}"
+      "tag": "${ispName}🔐",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
