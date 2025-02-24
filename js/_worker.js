@@ -4888,7 +4888,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
 
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
-    const ispInfo = `[${countryText}] ${isp}`;
+    const ispInfo = `${countryText} ${isp}`;
     const UUIDS = `${generateUUIDv4()}`;
 
     if (type === 'vless') {
