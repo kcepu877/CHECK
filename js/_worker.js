@@ -3809,7 +3809,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
     "server_name": "${wildcrd}"
   },` : '';
  if (type === 'vless') {
-      bmkg+= `        "${ispName}🦊",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3819,17 +3819,15 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
-      "Host": [
-        "${wildcrd}"
-      ]
-    },
+          "Host": "${wildcrd}"
+        },
         "max_early_data": 0,
         "path": "/${pathcfnegara}",
         "type": "ws"
@@ -3838,7 +3836,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}🔐",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3850,14 +3848,12 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "password": "${pathcfnegara}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
-      "Host": [
-        "${wildcrd}"
-      ]
-    },
+          "Host": "${wildcrd}"
+        },
         "max_early_data": 0,
         "path": "/${pathcfnegara}",
         "type": "ws"
@@ -3865,7 +3861,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}🛡️",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
@@ -3888,17 +3884,15 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
-      "Host": [
-        "${wildcrd}"
-      ]
-    },
+          "Host": "${wildcrd}"
+        },
         "max_early_data": 0,
         "path": "/${pathcfnegara}",
         "type": "ws"
@@ -3920,10 +3914,8 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
-      "Host": [
-        "${wildcrd}"
-      ]
-    },
+          "Host": "${wildcrd}"
+        },
         "max_early_data": 0,
         "path": "/${pathcfnegara}",
         "type": "ws"
@@ -4216,7 +4208,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         },
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
-      "packet_encoding": "xudp"
+      "packet_encoding": ""
     },`;
     } else if (type === 'trojan') {
       bmkg+= `        "${ispName}",\n`
@@ -4276,7 +4268,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         },
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
-      "packet_encoding": "xudp"
+      "packet_encoding": ""
     },
     {
       "type": "trojan",
@@ -4537,7 +4529,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}",${snio}
@@ -4602,7 +4594,7 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
         "max_streams": 32,
         "protocol": "smux"
       },
-      "packet_encoding": "xudp",
+      "packet_encoding": "",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🦊",${snio}
