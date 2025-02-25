@@ -3895,7 +3895,9 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
-          "Host": "${wildcrd}"
+          "Host": [
+	  "${wildcrd}"
+   ]
         },
         "max_early_data": 0,
         "path": "/${pathcfnegara}",
@@ -3918,7 +3920,9 @@ console.log(`Path: /${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${pro
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
-          "Host": "${wildcrd}"
+          "Host": [
+	  "${wildcrd}"
+   ]
         },
         "max_early_data": 0,
         "path": "/${pathcfnegara}",
