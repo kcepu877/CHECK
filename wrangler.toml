@@ -14,19 +14,7 @@ enabled = true
 #id = "4d2115c565d6402d891344b8e7e1c119"
 
 [[routes]]
-pattern = "bugwildcard.bmkg.xyz.free-cf.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "bugwildcard.bmkg.xyz"
-custom_domain = true
-[[routes]]
-pattern = "free-cf.bmkg.xyz"
-custom_domain = true
-[[routes]]
 pattern = "web.ndeso.xyz"
-custom_domain = true
-[[routes]]
-pattern = "xvpn.ndeso.web.id"
 custom_domain = true
 [[routes]]
 pattern = "ava.game.naver.com.web.ndeso.xyz"
@@ -67,6 +55,10 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.web.ndeso.xyz"
 custom_domain = true
+
+[[routes]]
+pattern = "free-cf.bmkg.xyz"
+custom_domain = true
 [[routes]]
 pattern = "ava.game.naver.com.free-cf.bmkg.xyz"
 custom_domain = true
@@ -106,45 +98,7 @@ custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.free-cf.bmkg.xyz"
 custom_domain = true
-[[routes]]
-pattern = "ava.game.naver.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "graph.instagram.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "quiz.int.vidio.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "live.iflix.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "support.zoom.us.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "blog.webex.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "investors.spotify.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "cache.netflix.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "zaintest.vuclip.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "ads.ruangguru.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "io.ruangguru.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "api.midtrans.com.xvpn.ndeso.web.id"
-custom_domain = true
-[[routes]]
-pattern = "investor.fb.com.xvpn.ndeso.web.id"
-custom_domain = true
+
 [[routes]]
 pattern = "gorengan.ndeso.web.id"
 custom_domain = true
@@ -186,5 +140,429 @@ pattern = "api.midtrans.com.gorengan.ndeso.web.id"
 custom_domain = true
 [[routes]]
 pattern = "investor.fb.com.gorengan.ndeso.web.id"
+custom_domain = true
+
+#lanjutan#
+
+[[routes]]
+pattern = "freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.cloudproxyip.my.id"
+custom_domain = true
+
+[[routes]]
+pattern = "freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.freevpn.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
 
